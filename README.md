@@ -42,7 +42,12 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
       <a href="docs/images/conky-nusantara-preview.png"><img src="docs/images/thumbnails/conky-nusantara-preview.jpg" width="100%" alt="Nusantara: jam dan cuaca di kiri, metrik sistem di atas, dengan aksen kawung"></a><br><br>
       <a href="conky-nusantara/README.md#pemasangan">Pemasangan</a> · <a href="conky-nusantara/">Source</a>
     </td>
-    <td width="50%"></td>
+    <td width="50%" valign="top">
+      <strong>Garuda Orbit</strong><br>
+      <sub>Indonesia · astronot retro · jam piksel</sub><br><br>
+      <a href="docs/images/conky-garuda-orbit-preview.png"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit: astronot merah-putih, orbit emas, jam piksel dan statistik transparan"></a><br><br>
+      <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="conky-garuda-orbit/">Source</a>
+    </td>
   </tr>
 </table>
 

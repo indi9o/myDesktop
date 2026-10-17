@@ -1,0 +1,24 @@
+CONKY GARUDA ORBIT — PAKET PORTABEL
+
+Target: Ubuntu/Debian desktop GNOME, paling sesuai layar 16:9.
+Pasang dependensi:
+  sudo apt update
+  sudo apt install conky-all python3 fonts-dejavu-core x11-xserver-utils
+
+Ekstrak paket, masuk ke folder Conky-GarudaOrbit, lalu jalankan tanpa sudo:
+  python3 install.py
+
+Installer mencadangkan wallpaper dan konfigurasi Conky terdahulu, memasang tema
+di ~/.config/conky/GarudaOrbit, mengatur wallpaper dan autostart, lalu mengganti
+Conky yang sedang berjalan. Cadangan ada di ~/.config/conky/GarudaOrbit-backups/.
+
+Jalankan ulang:
+  ~/.config/conky/GarudaOrbit/start.sh
+
+Pulihkan tampilan sebelum pemasangan:
+  python3 ~/.config/conky/GarudaOrbit/restore.py
+
+Metrik sistem diperbarui setiap 3 detik; cuaca Malang dari Open-Meteo setiap
+15 menit. Ubah koordinat di theme/metrics.py dan label kota di theme/garuda_orbit.lua
+untuk mengganti kota. Tema dan paket tidak menyertakan kredensial atau data
+pribadi. Lihat README.md untuk panduan lengkap.
