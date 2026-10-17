@@ -50,6 +50,54 @@ end
 local function metric(cr,x,label,value,h)
  text(cr,x,37,label,13,p.gold,true);text(cr,x+53,37,value,20,h,true)
 end
+-- A time-of-day illustration, not an astronomical Moon ephemeris.
+local function daycycle(cr,d)
+ local day=rawget(d,'solar_phase')=='day'
+ local progress=math.max(0,math.min(1,tonumber(rawget(d,'solar_progress')) or 0))
+ local hue=day and p.gold or p.jade
+ local cx,cy,rx,ry=206,510,140,52
+ local function arc(fraction)
+  cairo_new_path(cr)
+  for i=0,80 do
+   local a=math.pi+math.pi*fraction*i/80
+   local x,y=cx+rx*math.cos(a),cy+ry*math.sin(a)
+   if i==0 then cairo_move_to(cr,x,y) else cairo_line_to(cr,x,y) end
+  end
+  cairo_stroke(cr)
+ end
+ color(cr,hue,.28);cairo_set_line_width(cr,1);arc(1)
+ if progress>0 then color(cr,hue,.9);cairo_set_line_width(cr,1.5);arc(progress) end
+ for i=0,8 do
+  local a=math.pi+math.pi*i/8
+  color(cr,hue,.35);cairo_set_line_width(cr,1)
+  cairo_move_to(cr,cx+(rx+4)*math.cos(a),cy+(ry+4)*math.sin(a))
+  cairo_line_to(cr,cx+(rx+7)*math.cos(a),cy+(ry+7)*math.sin(a));cairo_stroke(cr)
+ end
+ local a=math.pi+math.pi*progress
+ local x,y=cx+rx*math.cos(a),cy+ry*math.sin(a)
+ if day then
+  color(cr,p.gold);cairo_new_path(cr);cairo_arc(cr,x,y,5,0,2*math.pi);cairo_fill(cr)
+  for i=0,7 do
+   local angle=i*math.pi/4
+   cairo_move_to(cr,x+8*math.cos(angle),y+8*math.sin(angle))
+   cairo_line_to(cr,x+11*math.cos(angle),y+11*math.sin(angle));cairo_stroke(cr)
+  end
+ else
+  -- Cut the crescent inside a group so the wallpaper remains transparent.
+  cairo_save(cr);cairo_push_group(cr);color(cr,p.ivory)
+  cairo_new_path(cr);cairo_arc(cr,x,y,8,0,2*math.pi);cairo_fill(cr)
+  cairo_set_operator(cr,CAIRO_OPERATOR_DEST_OUT);cairo_set_source_rgba(cr,0,0,0,1)
+  cairo_new_path(cr);cairo_arc(cr,x+4,y-3,7,0,2*math.pi);cairo_fill(cr)
+  cairo_set_operator(cr,CAIRO_OPERATOR_OVER);cairo_pop_group_to_source(cr);cairo_paint(cr);cairo_restore(cr)
+ end
+ text(cr,188,503,day and 'SIANG' or 'MALAM',12,hue,true)
+ local estimated=rawget(d,'solar_source')~='open-meteo'
+ if estimated then text(cr,182,519,'ESTIMASI',10,p.muted) end
+ local rise=rawget(d,'sunrise_label') or '--.--'
+ local setting=rawget(d,'sunset_label') or '--.--'
+ text(cr,57,537,(day and 'TERBIT ' or 'TERBENAM ')..(day and rise or setting),11,p.muted)
+ text(cr,247,537,(day and 'TERBENAM ' or 'TERBIT ')..(day and setting or rise),11,p.muted)
+end
 function conky_garuda_orbit()
  if not conky_window then return end
  local cs=cairo_xlib_surface_create(conky_window.display,conky_window.drawable,conky_window.visual,conky_window.width,conky_window.height)
@@ -71,6 +119,8 @@ function conky_garuda_orbit()
  text(cr,159,320,months[tonumber(os.date('%m'))],36,p.jade,true)
  text(cr,159,379,d.temperature..'°C',34,p.jade,true)
  text(cr,57,423,'MALANG / '..d.weather,12,p.muted)
+ daycycle(cr,d)
+ cairo_save(cr);cairo_translate(cr,0,100)
  line(cr,57,459,355,459)
  text(cr,57,492,'MEMORI TERSEDIA',12,p.gold)
  text(cr,57,524,d.ram_available..' GiB',24,p.ivory,true)
@@ -83,5 +133,6 @@ function conky_garuda_orbit()
  text(cr,57,691,'PENYIMPANAN KOSONG',12,p.gold)
  text(cr,57,723,d.disk_free..' GiB',24,p.ivory,true)
  text(cr,57,767,'SUHU CPU  '..d.cpu_temp..'°C',12,p.jade)
+ cairo_restore(cr)
  cairo_destroy(cr);cairo_surface_destroy(cs)
 end

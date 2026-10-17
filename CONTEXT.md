@@ -35,3 +35,7 @@ _Avoid_: Astronot memenuhi layar, karena ruang kosong tetap menjadi bagian utama
 **Aksen batik Garuda Orbit**:
 Corak kawung emas–tembaga yang terbaca pada pergelangan serta lis lengan atas astronot, sebagai identitas Indonesia bersama bendera merah-putih.
 _Avoid_: Emblem dada, karena aksen ini berupa motif kain pada lengan, bukan lambang Majapahit.
+
+**Lintasan siang–malam Garuda Orbit**:
+Busur di bawah cuaca Malang yang memperlihatkan perjalanan matahari dari terbit sampai terbenam, atau perjalanan malam dengan ikon bulan sampai matahari terbit berikutnya. Bulan adalah penanda siklus malam, bukan posisi atau fase astronomis Bulan.
+_Avoid_: Orbit Bulan aktual, karena busur ini menggambarkan waktu siang dan malam.

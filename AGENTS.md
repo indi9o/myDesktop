@@ -43,7 +43,10 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
   emas `D8B477`, hijau giok `A6C8AF`, dan warna redup `A7B8AF`.
 - Panel kiri Garuda Orbit mengikuti Orbit: jam besar, singkatan hari Indonesia
   vertikal, tanggal/bulan/suhu di sampingnya, lalu cuaca dan metrik di bawah.
-  CPU, RAM, SSD, serta uptime berjajar di atas tanpa background panel.
+  Busur siang–malam transparan berada di bawah cuaca, di atas memori, memakai
+  waktu terbit–terbenam Malang. Bulan menandai siklus malam secara ilustratif;
+  tanpa data, tampilkan ESTIMASI. CPU, RAM, SSD, serta uptime berjajar di atas
+  tanpa background panel.
 - Wallpaper Garuda Orbit bawaan adalah
   `theme/garuda-orbit-lapang-batik-wallpaper.png`: astronot di kanan setinggi sekitar
   45–50% layar, tanpa emblem Majapahit, dengan ruang angkasa tenang yang dominan.

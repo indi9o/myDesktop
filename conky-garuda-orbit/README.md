@@ -2,11 +2,11 @@
 
 [Kembali ke galeri tema](../README.md#galeri-tema)
 
-**Indonesia · retro · astronot · orbit.** Garuda Orbit memakai wallpaper **Lapang Batik**: astronot Indonesia dan ubur-ubur bercahaya menjadi fokus di sisi kanan. Tinggi astronot sekitar 45–50% layar, lebih besar daripada Lapang v2; ubur-ubur ikut diperbesar secara proporsional. Sekitar 65–70% komposisi berupa ruang angkasa tenang; galaksi redup, bintang jarang, dan asteroid minimal memberi kesan layar lebih luas. Ukuran dan posisi astronot mengikuti Lapang v3. Batik kawung emas–tembaga dibuat lebih besar dan kontras pada pergelangan serta lis lengan atas; bendera merah-putih tetap terlihat. Warna biru gelap–emas dipertahankan. Varian ini tidak memakai emblem Majapahit. Layout dan warna Conky tetap sama.
+**Indonesia · retro · astronot · orbit.** Garuda Orbit memakai wallpaper **Lapang Batik**: astronot Indonesia dan ubur-ubur bercahaya menjadi fokus di sisi kanan. Tinggi astronot sekitar 45–50% layar, lebih besar daripada Lapang v2; ubur-ubur ikut diperbesar secara proporsional. Sekitar 65–70% komposisi berupa ruang angkasa tenang; galaksi redup, bintang jarang, dan asteroid minimal memberi kesan layar lebih luas. Ukuran dan posisi astronot mengikuti Lapang v3. Batik kawung emas–tembaga dibuat lebih besar dan kontras pada pergelangan serta lis lengan atas; bendera merah-putih tetap terlihat. Warna biru gelap–emas dipertahankan. Varian ini tidak memakai emblem Majapahit. Jam utama, metrik atas, dan palet Conky dipertahankan; panel kiri ditambah lintasan siang–malam.
 
 [Wallpaper Lapang Batik](theme/garuda-orbit-lapang-batik-wallpaper.png) menjadi latar bawaan. [Lapang v3](theme/garuda-orbit-lapang-v3-wallpaper.png) tetap tersedia. [Lapang v2](theme/garuda-orbit-lapang-v2-wallpaper.png) tetap tersedia. [Lapang awal](theme/garuda-orbit-lapang-wallpaper.png) tetap tersedia. Varian sebelumnya tetap tersedia sebagai alternatif: [Majapahit Nebula](theme/garuda-orbit-majapahit-wallpaper.png), [Nebula tanpa emblem](theme/garuda-orbit-nebula-wallpaper.png), dan [poster retro](theme/garuda-orbit-wallpaper.png). Wallpaper adalah ilustrasi artistik, bukan foto misi antariksa.
 
-Panel kiri memakai jam piksel besar di atas; singkatan hari Indonesia disusun vertikal di samping tanggal, bulan, dan suhu. Cuaca Malang berada di bawahnya, diikuti informasi memori dan penyimpanan yang dipisahkan garis tipis. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipertahankan pada teks dan angka; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
+Panel kiri memakai jam piksel besar di atas; singkatan hari Indonesia disusun vertikal di samping tanggal, bulan, dan suhu. Cuaca Malang berada di bawahnya, diikuti informasi memori dan penyimpanan yang dipisahkan garis tipis. Di bawah cuaca terdapat busur siang–malam transparan berwarna emas–giok, selebar panel dengan tinggi sekitar 80 px. Informasi memori dan penyimpanan bergeser sedikit ke bawah. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipertahankan pada teks dan angka; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
 
 Wallpaper tetap statis; visualizer audio bergerak pada 20 FPS saat ada suara, sementara metrik diperbarui setiap tiga detik. Desktop aktif baru diganti setelah installer dijalankan.
 
@@ -79,7 +79,9 @@ python3 ~/.config/conky/GarudaOrbit/restore.py
 - Alokasi swap zram dan jejak RAM fisiknya ditampilkan terpisah. Jika zram tidak tersedia, nilainya ditampilkan nol.
 - Persentase disk mengikuti perhitungan `df`, berdasarkan ruang yang tersedia untuk pengguna.
 - Cuaca [Open-Meteo](https://open-meteo.com/) memakai koordinat Malang dan diperbarui setiap 15 menit. Data yang tidak tersedia atau lebih tua dari dua jam ditandai `CUACA TIDAK TERSEDIA`.
-- Untuk mengganti kota, ubah koordinat di `theme/metrics.py` dan label kota di `theme/garuda_orbit.lua` sebelum memasang.
+- Lintasan memakai waktu terbit–terbenam Malang dari Open-Meteo: matahari bergerak dari kiri ke kanan selama siang; saat malam, ikon bulan menandai perjalanan dari terbenam sampai terbit berikutnya. Bulan bersifat ilustratif, bukan posisi atau fase astronomis sebenarnya. Label ujung busur mengikuti awal dan akhir siklus aktif.
+- Jika data terbit–terbenam tidak mencakup waktu sekarang, busur menampilkan **ESTIMASI** dengan acuan 06.00–18.00 WIB. Data diperbarui bersama cuaca setiap 15 menit, tanpa proses atau dependensi tambahan.
+- Untuk mengganti kota, ubah koordinat di `theme/metrics.py`, zona waktu di `theme/daycycle.py`, dan label kota di `theme/garuda_orbit.lua` sebelum memasang.
 - Jam dan tanggal mengikuti waktu lokal sistem; singkatan hari memakai tiga huruf bahasa Indonesia (misalnya `SAB` untuk Sabtu).
 - Warna dan ornamen diatur di `theme/garuda_orbit.lua`; wallpaper tersedia sebagai berkas terpisah.
 - Pembacaan suhu bergantung pada sensor kernel.
@@ -104,7 +106,8 @@ Mengedit source proyek tidak langsung mengubah salinan terpasang; jalankan kemba
 | `theme/garuda_orbit.lua` | Jam, tanggal, ornamen, dan metrik melalui Lua/Cairo |
 | `theme/visualizer.py` | Analisis spektrum audio, pengelolaan proses, dan editor posisi |
 | `theme/Visualizer.conf` / `theme/visualizer.lua` | Batang spektrum transparan pada 20 FPS |
-| `theme/metrics.py` | Kolektor metrik dan cuaca |
+| `theme/metrics.py` | Kolektor metrik, cuaca, serta waktu terbit–terbenam |
+| `theme/daycycle.py` | Siklus siang–malam Malang dan perkiraan saat data tidak tersedia |
 | `theme/start.sh` | Peluncur dan deteksi lebar monitor |
 | `theme/garuda-orbit-lapang-batik-wallpaper.png` | Wallpaper bawaan: batik kawung kontras, tinggi astronot sekitar 45–50% layar, tanpa emblem |
 | `theme/garuda-orbit-lapang-v3-wallpaper.png` | Alternatif Lapang v3 |
@@ -122,6 +125,6 @@ Mengedit source proyek tidak langsung mengubah salinan terpasang; jalankan kemba
 python3 -m unittest discover -s tests -v
 ```
 
-Tes memeriksa pemetaan nada ke pita frekuensi, kembali aktif setelah senyap, batas nilai batang, kegagalan sumber audio, serta penyimpanan posisi. Folder tes tersedia dalam source repositori.
+Tes siklus waktu memeriksa siang, malam lintas tengah malam, batas terbit–terbenam, dan cache tidak tersedia atau kedaluwarsa. Tes visualizer memeriksa pemetaan nada ke pita frekuensi, kembali aktif setelah senyap, batas nilai batang, kegagalan sumber audio, serta penyimpanan posisi. Folder tes tersedia dalam source repositori.
 
 Wallpaper dibuat dengan ImageGen; prompt Lapang Batik tersimpan di [lapang-batik-wallpaper-prompt.txt](theme/lapang-batik-wallpaper-prompt.txt), prompt Lapang v3 di [lapang-v3-wallpaper-prompt.txt](theme/lapang-v3-wallpaper-prompt.txt), prompt Lapang v2 di [lapang-v2-wallpaper-prompt.txt](theme/lapang-v2-wallpaper-prompt.txt), prompt Lapang awal di [lapang-wallpaper-prompt.txt](theme/lapang-wallpaper-prompt.txt), prompt varian Majapahit di [majapahit-wallpaper-prompt.txt](theme/majapahit-wallpaper-prompt.txt), prompt Nebula di [nebula-wallpaper-prompt.txt](theme/nebula-wallpaper-prompt.txt) dan prompt poster sebelumnya di [wallpaper-prompt.txt](theme/wallpaper-prompt.txt). Paket tidak menyertakan kredensial, log sesi, atau cadangan pribadi.
