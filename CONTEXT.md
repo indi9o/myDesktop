@@ -31,3 +31,7 @@ _Avoid_: Dashboard layar penuh, karena tema mengutamakan lanskap sebagai pusat p
 **Komposisi lapang Garuda Orbit**:
 Komposisi wallpaper yang didominasi ruang angkasa tenang, dengan astronot tanpa emblem Majapahit dan ubur-ubur sebagai fokus di kanan; sisi kiri tetap lega untuk widget. Galaksi redup dan asteroid yang jarang memperkuat kedalaman serta menyisakan ruang bagi widget.
 _Avoid_: Astronot memenuhi layar, karena ruang kosong tetap menjadi bagian utama komposisi.
+
+**Aksen batik Garuda Orbit**:
+Corak kawung emas–tembaga yang terbaca pada pergelangan serta lis lengan atas astronot, sebagai identitas Indonesia bersama bendera merah-putih.
+_Avoid_: Emblem dada, karena aksen ini berupa motif kain pada lengan, bukan lambang Majapahit.
