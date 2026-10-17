@@ -49,6 +49,15 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
       <a href="conky-horizon/README.md#pemasangan">Pemasangan</a> · <a href="conky-horizon/">Source</a>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>Laras</strong><br>
+      <sub>Persawahan senja · jam serif · metrik transparan</sub><br><br>
+      <a href="docs/images/conky-laras-preview.png"><img src="docs/images/thumbnails/conky-laras-preview.jpg" width="100%" alt="Laras: terasering senja, jam serif di tengah atas, dan metrik sistem di bawah"></a><br><br>
+      <a href="conky-laras/README.md#pemasangan">Pemasangan</a> · <a href="conky-laras/">Source</a>
+    </td>
+    <td width="50%"></td>
+  </tr>
 </table>
 
 *Semua pratinjau memakai rasio 16:9. Nilai sistem pada gambar adalah cuplikan saat render; dock dan panel mengikuti desktop masing-masing. Atlas Live adalah mode animasi dari tema Atlas.*

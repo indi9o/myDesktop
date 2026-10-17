@@ -16,6 +16,8 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
 - `conky-horizon/`: tema lanskap bulan.
 - `conky-atlas/`: tema topografi; Atlas Live adalah mode dari tema yang sama.
 - `conky-nusantara/`: tema gunung berapi dengan nuansa Indonesia.
+- `conky-laras/`: persawahan senja dengan jam serif di tengah atas dan metrik
+  transparan di bagian bawah.
 - `conky-garuda-orbit/`: astronaut Indonesia, wallpaper Majapahit Nebula,
   jam piksel, dan visualizer audio.
 - `conky-*/theme/`: source konfigurasi, Lua, kolektor metrik, peluncur, dan aset.
@@ -29,7 +31,7 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
 - README utama hanya berisi pengantar, galeri dua kolom, dan navigasi.
   Panduan pemasangan, penjelasan fitur, dan penyesuaian berada di README
   masing-masing folder tema.
-- Urutan galeri: Nusantara, Garuda Orbit, Orbit, Atlas Live, Atlas, Horizon.
+- Urutan galeri: Nusantara, Garuda Orbit, Orbit, Atlas Live, Atlas, Horizon, Laras.
   Ubah urutan hanya bila diminta pengguna.
 - Gunakan thumbnail statis 960×540 yang ditautkan ke gambar penuh atau GIF.
   Hindari memuat animasi besar langsung sebagai thumbnail galeri.
