@@ -23,3 +23,7 @@ _Avoid_: Pemutar dijeda, karena keadaan ini ditentukan oleh suara keluaran, buka
 **Posisi visualizer**:
 Lokasi visualizer yang dapat diatur dengan menyeret bingkai pengaturan dan disimpan untuk sesi berikutnya; tampilan normalnya terkunci.
 _Avoid_: Posisi pemutar, karena letak aplikasi multimedia tidak menentukan lokasi visualizer.
+
+**Komposisi ringkas Laras**:
+Kelompok kecil jam, tanggal, cuaca, dan metrik inti yang memberi ruang dominan bagi wallpaper persawahan. Dial matahari–bulan menjadi aksen; detail pemantauan sistem berada di luar tampilan utama.
+_Avoid_: Dashboard layar penuh, karena tema mengutamakan lanskap sebagai pusat perhatian.

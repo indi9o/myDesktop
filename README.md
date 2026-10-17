@@ -52,8 +52,8 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
   <tr>
     <td width="50%" valign="top">
       <strong>Laras</strong><br>
-      <sub>Matahari &amp; bulan · bulir padi · denyut CPU</sub><br><br>
-      <a href="docs/images/conky-laras-preview.png"><img src="docs/images/thumbnails/conky-laras-preview.jpg" width="100%" alt="Laras: lintasan matahari dan bulan pada dial jam, meter bulir padi, dan grafik CPU"></a><br><br>
+      <sub>Ringkas di kiri atas · dial matahari &amp; bulan</sub><br><br>
+      <a href="docs/images/conky-laras-preview.png"><img src="docs/images/thumbnails/conky-laras-preview.jpg" width="100%" alt="Laras ringkas: dial matahari-bulan, jam, cuaca, dan CPU/RAM/SSD di kiri atas"></a><br><br>
       <a href="conky-laras/README.md#pemasangan">Pemasangan</a> · <a href="conky-laras/">Source</a>
     </td>
     <td width="50%"></td>

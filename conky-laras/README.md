@@ -4,15 +4,23 @@
 
 **Persawahan Nusantara · senja · jam serif.** Laras memadukan ilustrasi terasering saat senja dengan warna hijau tua, putih gading, dan emas hangat. Latar merupakan interpretasi artistik suasana pedesaan Jawa dan Bali, bukan foto atau dokumentasi lokasi tertentu.
 
-Jam serif berada di dalam **dial lintasan matahari–bulan** di sisi kiri. Ikon matahari emas dan bulan sabit bergerak di sisi berlawanan pada lintasan yang sama: matahari melintas di busur atas saat siang, lalu bulan mengambil busur atas saat malam. Ikon aktif lebih terang; busur yang sudah dilalui ikut terisi. Garis kecil di tepi tetap menandai menit. Tanggal berada di bawah dial; cuaca Malang menjadi komposisi terpisah di sampingnya.
+## Komposisi ringkas
 
-Progres siang memakai waktu terbit–terbenam Malang; progres malam memakai terbenam hingga terbit berikutnya. Waktu tersebut dibaca dari data harian [Open-Meteo](https://open-meteo.com/en/docs). Label terbit dan terbenam memakai WIB, sedangkan angka jam mengikuti zona waktu komputer. Ikon Bulan adalah ilustrasi progres malam, bukan perhitungan posisi, waktu terbit, atau fase Bulan astronomis.
+Satu kelompok transparan di kiri atas menyisakan persawahan sebagai pusat perhatian. Pada layar 1920×1080, isi widget memakai area sekitar **300×350 px**, dengan margin awal 64 px dari kiri dan atas. Tidak ada widget di kanan atau di bawah layar.
 
-Data terbit–terbenam disimpan bersama cache cuaca. Jika cache tidak mencakup waktu sekarang, dial memakai perkiraan siklus 06.00–18.00 WIB dan menampilkan **SIKLUS JAM / PERKIRAAN** beserta tanda `~`, hingga data tersedia kembali.
+- Jam serif **56 px** berada di dalam dial tipis berdiameter sekitar 190 px.
+- Ikon matahari emas dan bulan sabit menjadi aksen kecil pada lintasan; ikon aktif lebih terang.
+- Tanggal memakai **13 px**, cuaca Malang **13–15 px**, serta label CPU/RAM/SSD **12 px** dan persentase **16 px**.
+- CPU, RAM, dan SSD disajikan dalam satu baris ringkas. Warna angka bergeser ke amber mulai 75% dan merah bata mulai 90%.
+- Grafik CPU, meter bulir padi, detail zram/swap, uptime, dan teks dekoratif tidak ditampilkan pada komposisi utama.
 
-Di kanan atas, grafik **Denyut Mesin** memperlihatkan perubahan beban CPU. Tiga meter **bulir padi** menunjukkan CPU, RAM, dan SSD: 20 bulir masing-masing mewakili lima persen. Warna bergeser dari emas ke amber mulai 75%, lalu merah bata mulai 90%. RAM tersedia, ruang penyimpanan kosong, dan suhu CPU ditampilkan di dekat meter masing-masing.
+Penskalaan mengikuti lebar dan tinggi monitor utama, dengan acuan 1920×1080. Jendela Conky sendiri dibatasi sekitar 430×430 px pada ukuran acuan, alih-alih memenuhi layar. Wallpaper, palet, dan pembaruan tiga detik tetap dipertahankan.
 
-Bagian bawah berupa catatan lapangan ringkas: ornamen tangkai padi, zram beserta RAM fisiknya, swap SSD, serta lama menyala. Tidak ada panel latar atau deretan lima kolom seragam. Wallpaper persawahan tetap sama.
+## Lintasan matahari–bulan
+
+Progres siang memakai waktu terbit–terbenam Malang; progres malam memakai terbenam hingga terbit berikutnya. Waktu tersebut dibaca dari data harian [Open-Meteo](https://open-meteo.com/en/docs). Angka jam mengikuti zona waktu komputer, sedangkan siklus Malang memakai WIB. Ikon Bulan adalah ilustrasi progres malam, bukan perhitungan posisi, waktu terbit, atau fase Bulan astronomis.
+
+Data disimpan bersama cache cuaca. Jika cache tidak mencakup waktu sekarang, dial memakai perkiraan siklus 06.00–18.00 WIB dan menampilkan **SIKLUS PERKIRAAN**. Label panjang serta waktu terbit/terbenam disembunyikan dari dial agar tetap ringkas.
 
 Metrik dan gambar Conky diperbarui setiap tiga detik; cuaca setiap 15 menit. Tidak ada loop animasi cepat, visualizer audio, atau pengambilan suara. Membuat atau mengedit source tidak mengubah desktop aktif; perubahan diterapkan setelah installer dijalankan.
 
@@ -36,7 +44,7 @@ python3 install.py
 
 Paket portabel dapat diekstrak lalu dipasang dengan `python3 install.py` dari folder `Conky-Laras`.
 
-Installer mencadangkan wallpaper, autostart, dan konfigurasi Laras sebelumnya di `~/.config/conky/Laras-backups/`. Tema disalin ke `~/.config/conky/Laras`, wallpaper dan autostart diatur, lalu Conky yang sedang berjalan diganti. Lebar layout mengikuti monitor utama melalui `xrandr`, dengan acuan 1920×1080.
+Installer mencadangkan wallpaper, autostart, dan konfigurasi Laras sebelumnya di `~/.config/conky/Laras-backups/`. Tema disalin ke `~/.config/conky/Laras`, wallpaper dan autostart diatur, lalu Conky yang sedang berjalan diganti. Ukuran layout mengikuti lebar dan tinggi monitor utama melalui `xrandr`, dengan acuan 1920×1080.
 
 ## Menjalankan ulang
 
@@ -56,13 +64,11 @@ Pemulihan mengembalikan wallpaper dan autostart sebelumnya. Untuk tema myDesktop
 
 - RAM tersedia dibaca dari `MemAvailable`; persentase RAM terpakai dihitung dari total dikurangi nilai tersebut.
 - Persentase penyimpanan mengikuti perhitungan `df` untuk filesystem `/`, berdasarkan ruang yang tersedia bagi pengguna.
-- Zram menampilkan alokasi swap dan RAM fisik secara terpisah. Swap lain ditampilkan sebagai `SWAP SSD`; label ini mengasumsikan swap non-zram berada di SSD dan tidak mendeteksi jenis media fisik.
-- Tidak ada zram atau swap: nilai alokasi ditampilkan nol. Sensor atau jejak RAM fisik zram yang tidak dapat dibaca ditandai `--`.
+- Kolektor masih menyediakan detail zram, swap, suhu CPU, uptime, dan riwayat CPU di `~/.cache/conky-laras/metrics.txt`. Komposisi ringkas tidak menggambarkan data tambahan ini.
 - Cuaca memakai koordinat Malang melalui [Open-Meteo](https://open-meteo.com/). Data tidak tersedia atau lebih tua dari dua jam ditandai `CUACA TIDAK TERSEDIA`.
 - Untuk mengganti kota, ubah koordinat dan zona waktu API pada `theme/metrics.py`, `ZONE` pada `theme/daycycle.py`, serta label `MALANG` pada `theme/laras.lua`.
 - Jam dan tanggal mengikuti zona waktu lokal komputer.
-- Warna, ukuran, susunan widget, dan ornamen padi diatur pada `theme/laras.lua`.
-- Grafik CPU menyimpan maksimal 60 sampel berjarak tiga detik di memori (sekitar tiga menit). Ketika baru berjalan, grafik memakai sampel yang sudah tersedia, dengan durasi sebenarnya tertulis di bawahnya; sebelum dua sampel tersedia, tampil pesan menunggu. Skala vertikal tetap 0–100%. Riwayat dimulai ulang bersama kolektor.
+- Warna, ukuran, margin, dan susunan widget diatur pada `theme/laras.lua`. Batas jendela diatur pada `theme/Laras.conf`.
 - Kolektor metrik berhenti ketika proses Conky utama Laras yang diluncurkan oleh `start.sh` berakhir.
 
 Log tersedia di `~/.cache/conky-laras/`. Jalankan ulang installer setelah mengubah source untuk memperbarui salinan terpasang.
@@ -96,10 +102,10 @@ Tes tersedia dalam source repositori. Builder memeriksa sintaks Python dan shell
 | Lokasi | Kegunaan |
 |---|---|
 | `theme/Laras.conf` | Konfigurasi Conky |
-| `theme/laras.lua` | Dial waktu, cuaca, meter bulir padi, dan grafik CPU |
+| `theme/laras.lua` | Dial ringkas, jam, tanggal, cuaca, dan CPU/RAM/SSD |
 | `theme/metrics.py` | Kolektor sistem, cuaca, dan cache terbit–terbenam |
 | `theme/daycycle.py` | Perhitungan progres siang–malam dan perkiraan offline |
-| `theme/start.sh` | Peluncur, penguncian, dan deteksi lebar monitor |
+| `theme/start.sh` | Peluncur, penguncian, dan deteksi ukuran monitor |
 | `theme/laras-wallpaper.png` | Ilustrasi terasering senja |
 | `theme/wallpaper-prompt.txt` | Prompt ImageGen |
 | `install.py` / `restore.py` | Pemasangan, cadangan, dan pemulihan |

@@ -100,10 +100,16 @@ def collect():
 if __name__ == '__main__':
     import fcntl
     lock = (BASE / 'metrics.lock').open('w')
-    try:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except BlockingIOError:
-        raise SystemExit(0)
+    deadline = time.monotonic() + 5
+    while True:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            break
+        except BlockingIOError:
+            parent = os.environ.get('LARAS_PARENT_PID')
+            if not parent or not Path('/proc', parent).exists() or time.monotonic() >= deadline:
+                raise SystemExit(0)
+            time.sleep(.1)
     threading.Thread(target=refresh_weather, daemon=True).start()
     previous = cpu_times()
     history = deque(maxlen=60)

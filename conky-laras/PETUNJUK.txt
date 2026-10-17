@@ -23,7 +23,8 @@ Metrik sistem diperbarui setiap 3 detik; cuaca Malang dari Open-Meteo setiap
 untuk mengganti kota. Tema dan paket tidak menyertakan kredensial atau data
 pribadi. Lihat README.md untuk panduan lengkap.
 
-Dial waktu di kiri, cuaca di samping, meter bulir padi dan riwayat CPU di kanan.
+Satu kelompok 300x350 px di kiri atas: dial kecil, jam, tanggal, cuaca,
+dan CPU/RAM/SSD. Grafik CPU, zram, swap, dan uptime tidak ditampilkan.
 Diperbarui setiap 3 detik tanpa audio; wallpaper persawahan tetap statis.
 
 Dial matahari-bulan mengikuti progres siang-malam Malang dari terbit/terbenam

@@ -16,8 +16,8 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
 - `conky-horizon/`: tema lanskap bulan.
 - `conky-atlas/`: tema topografi; Atlas Live adalah mode dari tema yang sama.
 - `conky-nusantara/`: tema gunung berapi dengan nuansa Indonesia.
-- `conky-laras/`: persawahan senja dengan dial matahari–bulan, meter bulir padi,
-  dan grafik riwayat CPU; pembaruan tetap tiga detik.
+- `conky-laras/`: persawahan senja dengan satu kelompok ringkas di kiri atas: dial
+  matahari–bulan, jam, cuaca, dan CPU/RAM/SSD; tanpa widget bawah atau grafik CPU.
 - `conky-garuda-orbit/`: astronaut Indonesia, wallpaper Majapahit Nebula,
   jam piksel, dan visualizer audio.
 - `conky-*/theme/`: source konfigurasi, Lua, kolektor metrik, peluncur, dan aset.
@@ -35,6 +35,10 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
   Ubah urutan hanya bila diminta pengguna.
 - Gunakan thumbnail statis 960×540 yang ditautkan ke gambar penuh atau GIF.
   Hindari memuat animasi besar langsung sebagai thumbnail galeri.
+- Laras memakai satu kelompok ringkas di kiri atas (sekitar 300×350 px pada
+  layar 1920×1080), jam 56 px, dan teks pendukung 12–16 px. Pertahankan dial
+  matahari–bulan sebagai aksen; grafik CPU, zram/swap, uptime, dan widget bawah
+  tidak ditampilkan kecuali pengguna meminta perubahan komposisi.
 - Garuda Orbit memakai palet merah bata `E1785F`, putih gading `F5E8C9`,
   emas `D8B477`, hijau giok `A6C8AF`, dan warna redup `A7B8AF`.
 - Panel kiri Garuda Orbit mengikuti Orbit: jam besar, singkatan hari Indonesia
