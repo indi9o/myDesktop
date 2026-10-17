@@ -9,6 +9,20 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
 <table>
   <tr>
     <td width="50%" valign="top">
+      <strong>Nusantara</strong><br>
+      <sub>Gunung berapi · panel kiri · aksen batik kawung</sub><br><br>
+      <a href="docs/images/conky-nusantara-preview.png"><img src="docs/images/thumbnails/conky-nusantara-preview.jpg" width="100%" alt="Nusantara: jam dan cuaca di kiri, metrik sistem di atas, dengan aksen kawung"></a><br><br>
+      <a href="conky-nusantara/README.md#pemasangan">Pemasangan</a> · <a href="conky-nusantara/">Source</a>
+    </td>
+    <td width="50%" valign="top">
+      <strong>Garuda Orbit</strong><br>
+      <sub>Indonesia · astronot retro · jam piksel</sub><br><br>
+      <a href="docs/images/conky-garuda-orbit-preview.png"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit: astronot merah-putih, orbit emas, jam piksel dan statistik transparan"></a><br><br>
+      <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="conky-garuda-orbit/">Source</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
       <strong>Atlas Live</strong><br>
       <sub>Kontur bergerak · pemindai tembaga · panel kanan</sub><br><br>
       <a href="docs/images/conky-atlas-live-preview.gif"><img src="docs/images/thumbnails/conky-atlas-live-preview.jpg" width="100%" alt="Atlas Live: kontur topografi dengan jam serif dan statistik di kanan"></a><br><br>
@@ -33,20 +47,6 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
       <sub>Astronaut · jam piksel retro · panel kiri</sub><br><br>
       <a href="docs/images/conky-orbit-preview.png"><img src="docs/images/thumbnails/conky-orbit-preview.jpg" width="100%" alt="Orbit: wallpaper astronaut, jam piksel, dan panel statistik di kiri"></a><br><br>
       <a href="conky-orbit/README.md#pemasangan">Pemasangan</a> · <a href="conky-orbit/">Source</a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <strong>Nusantara</strong><br>
-      <sub>Gunung berapi · panel kiri · aksen batik kawung</sub><br><br>
-      <a href="docs/images/conky-nusantara-preview.png"><img src="docs/images/thumbnails/conky-nusantara-preview.jpg" width="100%" alt="Nusantara: jam dan cuaca di kiri, metrik sistem di atas, dengan aksen kawung"></a><br><br>
-      <a href="conky-nusantara/README.md#pemasangan">Pemasangan</a> · <a href="conky-nusantara/">Source</a>
-    </td>
-    <td width="50%" valign="top">
-      <strong>Garuda Orbit</strong><br>
-      <sub>Indonesia · astronot retro · jam piksel</sub><br><br>
-      <a href="docs/images/conky-garuda-orbit-preview.png"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit: astronot merah-putih, orbit emas, jam piksel dan statistik transparan"></a><br><br>
-      <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="conky-garuda-orbit/">Source</a>
     </td>
   </tr>
 </table>
