@@ -1,53 +1,46 @@
-"""Illustrative sun/moon clock driven by Malang sunrise and sunset epochs."""
-from datetime import datetime, timedelta
+"""Illustrative 24-hour curve for Malang, not astronomical altitude or Moon position."""
+from datetime import datetime
 import math
 from zoneinfo import ZoneInfo
 
 ZONE = ZoneInfo('Asia/Jakarta')
 
 
+def height(hour, rise, setting):
+    """Above the horizon during daylight; a shallow night curve below it."""
+    if rise <= hour <= setting:
+        return math.sin(math.pi * (hour-rise)/(setting-rise))
+    night_hour = hour if hour >= setting else hour+24
+    return -.4 * math.sin(math.pi * (night_hour-setting)/(24-setting+rise))
+
+
 def cycle(now, days=None):
-    """Return a continuous day/night clock; the moon is an illustrative night marker."""
-    events = []
+    local = datetime.fromtimestamp(now, ZONE)
+    midnight = local.replace(hour=0, minute=0, second=0, microsecond=0).timestamp()
+    rise, setting, estimated = 6., 18., True
     if isinstance(days, list):
         for row in days:
             try:
-                rise, setting = float(row['sunrise']), float(row['sunset'])
-                if math.isfinite(rise) and math.isfinite(setting) and 0 < setting-rise < 86400:
-                    events.extend([(rise, 'day'), (setting, 'night')])
+                r, s = float(row['sunrise']), float(row['sunset'])
+                if not (math.isfinite(r) and math.isfinite(s)):
+                    continue
+                # Use BOTH events for today's local calendar date, even at night.
+                if midnight < r < s < midnight+86400:
+                    rise, setting = (r-midnight)/3600, (s-midnight)/3600
+                    estimated = False
+                    break
             except (TypeError, ValueError, KeyError, OverflowError):
                 continue
-    events = sorted(set(events))
-    before = [event for event in events if event[0] <= now]
-    after = [event for event in events if event[0] > now]
-    estimated = True
-    if before and after:
-        start, phase = before[-1]
-        end, next_phase = after[0]
-        estimated = phase == next_phase or not (0 < end-start <= 86400)
-    if estimated:
-        # Explicit clock approximation when cached astronomical events do not cover now.
-        local = datetime.fromtimestamp(now, ZONE)
-        today = local.replace(hour=0, minute=0, second=0, microsecond=0)
-        rise, setting = today+timedelta(hours=6), today+timedelta(hours=18)
-        if local < rise:
-            start, end, phase = (setting-timedelta(days=1)).timestamp(), rise.timestamp(), 'night'
-        elif local < setting:
-            start, end, phase = rise.timestamp(), setting.timestamp(), 'day'
-        else:
-            start, end, phase = setting.timestamp(), (rise+timedelta(days=1)).timestamp(), 'night'
-    progress = max(0, min(1, (now-start)/(end-start)))
-    # Sun traverses the upper semicircle during the day and the lower one at night.
-    # The opposite moon symbol visualizes the night cycle, not the physical Moon's position.
-    sun = math.pi*(1+progress) if phase == 'day' else math.pi*progress
-    rise = start if phase == 'day' else end
-    setting = end if phase == 'day' else start
+    hour = (now-midnight)/3600
+    day = rise <= hour < setting
+    def label(value):
+        return datetime.fromtimestamp(midnight+value*3600, ZONE).strftime('%H.%M')
     return {
-        'solar_phase': phase,
-        'solar_progress': f'{progress:.6f}',
-        'sun_angle': f'{sun:.8f}',
-        'moon_angle': f'{(sun+math.pi)%(2*math.pi):.8f}',
-        'sunrise_label': datetime.fromtimestamp(rise, ZONE).strftime('%H.%M'),
-        'sunset_label': datetime.fromtimestamp(setting, ZONE).strftime('%H.%M'),
+        'solar_phase': 'day' if day else 'night',
+        'clock_progress': f'{hour/24:.8f}',
+        'curve_now': f'{height(hour, rise, setting):.8f}',
+        'curve_points': ','.join(f'{height(i/4, rise, setting):.8f}' for i in range(97)),
+        'sunrise_label': label(rise),
+        'sunset_label': label(setting),
         'solar_source': 'estimated' if estimated else 'open-meteo',
     }

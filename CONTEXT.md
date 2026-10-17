@@ -37,5 +37,5 @@ Corak kawung emas–tembaga yang terbaca pada pergelangan serta lis lengan atas 
 _Avoid_: Emblem dada, karena aksen ini berupa motif kain pada lengan, bukan lambang Majapahit.
 
 **Lintasan siang–malam Garuda Orbit**:
-Busur di bawah cuaca Malang yang memperlihatkan perjalanan matahari dari terbit sampai terbenam, atau perjalanan malam dengan ikon bulan sampai matahari terbit berikutnya. Bulan adalah penanda siklus malam, bukan posisi atau fase astronomis Bulan.
-_Avoid_: Orbit Bulan aktual, karena busur ini menggambarkan waktu siang dan malam.
+Kurva harian di bawah cuaca Malang dengan sumbu tetap 00–24 dan garis horizon: siang berada di atas horizon, malam di bawahnya. Ikon matahari atau bulan menandai waktu sekarang, sedangkan bagian waktu mendatang lebih redup. Bulan adalah penanda siklus malam, bukan posisi atau fase astronomis Bulan.
+_Avoid_: Orbit Bulan aktual, karena kurva ini menggambarkan waktu siang dan malam, bukan ketinggian astronomis.

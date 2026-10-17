@@ -53,28 +53,40 @@ end
 -- A time-of-day illustration, not an astronomical Moon ephemeris.
 local function daycycle(cr,d)
  local day=rawget(d,'solar_phase')=='day'
- local progress=math.max(0,math.min(1,tonumber(rawget(d,'solar_progress')) or 0))
- local hue=day and p.gold or p.jade
- local cx,cy,rx,ry=206,510,140,52
- local function arc(fraction)
+ local progress=tonumber(rawget(d,'clock_progress'))
+ local current=tonumber(rawget(d,'curve_now'))
+ local values={}
+ for v in (rawget(d,'curve_points') or ''):gmatch('[^,]+') do
+  local n=tonumber(v);if n then values[#values+1]=n end
+ end
+ -- Old or missing collector output: wait for valid curve data instead of inventing a position.
+ if not progress or not current or #values~=97 then
+  text(cr,57,500,'SIKLUS BELUM TERSEDIA',11,p.muted);return
+ end
+ progress=math.max(0,math.min(1,progress))
+ local left,width,horizon,amplitude=65,282,503,45
+ local function segment(finish)
   cairo_new_path(cr)
-  for i=0,80 do
-   local a=math.pi+math.pi*fraction*i/80
-   local x,y=cx+rx*math.cos(a),cy+ry*math.sin(a)
+  for i=0,96 do
+   local f=i/96
+   if f>finish then break end
+   local x,y=left+f*width,horizon-values[i+1]*amplitude
    if i==0 then cairo_move_to(cr,x,y) else cairo_line_to(cr,x,y) end
   end
+  if finish<1 then cairo_line_to(cr,left+finish*width,horizon-current*amplitude) end
   cairo_stroke(cr)
  end
- color(cr,hue,.28);cairo_set_line_width(cr,1);arc(1)
- if progress>0 then color(cr,hue,.9);cairo_set_line_width(cr,1.5);arc(progress) end
- for i=0,8 do
-  local a=math.pi+math.pi*i/8
-  color(cr,hue,.35);cairo_set_line_width(cr,1)
-  cairo_move_to(cr,cx+(rx+4)*math.cos(a),cy+(ry+4)*math.sin(a))
-  cairo_line_to(cr,cx+(rx+7)*math.cos(a),cy+(ry+7)*math.sin(a));cairo_stroke(cr)
+ color(cr,p.muted,.4);cairo_set_line_width(cr,.7)
+ cairo_move_to(cr,left,horizon);cairo_line_to(cr,left+width,horizon);cairo_stroke(cr)
+ for i=0,4 do
+  local x=left+width*i/4
+  cairo_move_to(cr,x,horizon-3);cairo_line_to(cr,x,horizon+3);cairo_stroke(cr)
+  text(cr,x-6,545,string.format('%02d',i*6),10,p.muted)
+  color(cr,p.muted,.4)
  end
- local a=math.pi+math.pi*progress
- local x,y=cx+rx*math.cos(a),cy+ry*math.sin(a)
+ color(cr,p.gold,.23);cairo_set_line_width(cr,1.2);segment(1)
+ color(cr,p.gold,.95);cairo_set_line_width(cr,1.6);segment(progress)
+ local x,y=left+progress*width,horizon-current*amplitude
  if day then
   color(cr,p.gold);cairo_new_path(cr);cairo_arc(cr,x,y,5,0,2*math.pi);cairo_fill(cr)
   for i=0,7 do
@@ -90,13 +102,13 @@ local function daycycle(cr,d)
   cairo_new_path(cr);cairo_arc(cr,x+4,y-3,7,0,2*math.pi);cairo_fill(cr)
   cairo_set_operator(cr,CAIRO_OPERATOR_OVER);cairo_pop_group_to_source(cr);cairo_paint(cr);cairo_restore(cr)
  end
- text(cr,188,503,day and 'SIANG' or 'MALAM',12,hue,true)
  local estimated=rawget(d,'solar_source')~='open-meteo'
- if estimated then text(cr,182,519,'ESTIMASI',10,p.muted) end
+ if estimated then text(cr,180,445,'ESTIMASI',10,p.muted) end
  local rise=rawget(d,'sunrise_label') or '--.--'
  local setting=rawget(d,'sunset_label') or '--.--'
- text(cr,57,537,(day and 'TERBIT ' or 'TERBENAM ')..(day and rise or setting),11,p.muted)
- text(cr,247,537,(day and 'TERBENAM ' or 'TERBIT ')..(day and setting or rise),11,p.muted)
+ text(cr,57,490,'TERBIT '..rise,10,p.muted)
+ text(cr,265,490,'TERBENAM '..setting,10,p.muted)
+
 end
 function conky_garuda_orbit()
  if not conky_window then return end
