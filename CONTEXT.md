@@ -27,3 +27,7 @@ _Avoid_: Posisi pemutar, karena letak aplikasi multimedia tidak menentukan lokas
 **Komposisi ringkas Laras**:
 Kelompok kecil jam, tanggal, cuaca, metrik inti, serta ringkasan zram, swap, dan uptime yang memberi ruang dominan bagi wallpaper persawahan. Dial matahari–bulan menjadi aksen; grafik dan detail sensor berada di luar tampilan utama.
 _Avoid_: Dashboard layar penuh, karena tema mengutamakan lanskap sebagai pusat perhatian.
+
+**Komposisi lapang Garuda Orbit**:
+Komposisi wallpaper yang didominasi ruang angkasa tenang, dengan astronot tanpa emblem Majapahit dan ubur-ubur kecil yang tampak jauh di kanan. Galaksi redup dan asteroid yang jarang memperkuat kedalaman serta menyisakan ruang bagi widget.
+_Avoid_: Close-up astronot, karena subjek besar mengurangi kesan luas.

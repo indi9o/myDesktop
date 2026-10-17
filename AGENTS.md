@@ -18,7 +18,7 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
 - `conky-nusantara/`: tema gunung berapi dengan nuansa Indonesia.
 - `conky-laras/`: persawahan senja dengan satu kelompok ringkas di kiri atas: dial
   matahari–bulan, jam, cuaca, dan CPU/RAM/SSD; tanpa widget bawah atau grafik CPU.
-- `conky-garuda-orbit/`: astronaut Indonesia, wallpaper Majapahit Nebula,
+- `conky-garuda-orbit/`: astronaut Indonesia, wallpaper Lapang tanpa emblem,
   jam piksel, dan visualizer audio.
 - `conky-*/theme/`: source konfigurasi, Lua, kolektor metrik, peluncur, dan aset.
 - `conky-*/install.py` dan `restore.py`: pemasangan serta pemulihan desktop.
@@ -45,8 +45,9 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
   vertikal, tanggal/bulan/suhu di sampingnya, lalu cuaca dan metrik di bawah.
   CPU, RAM, SSD, serta uptime berjajar di atas tanpa background panel.
 - Wallpaper Garuda Orbit bawaan adalah
-  `theme/garuda-orbit-majapahit-wallpaper.png`. Varian Nebula dan poster awal
-  tetap tersedia sebagai alternatif. Pertahankan ruang gelap di kiri untuk widget.
+  `theme/garuda-orbit-lapang-wallpaper.png`: astronot kecil di kanan tanpa emblem
+  Majapahit, dengan ruang angkasa tenang yang dominan. Varian lama tetap tersedia
+  sebagai alternatif. Pertahankan ruang gelap di kiri untuk widget.
 
 ## Source dan desktop terpasang
 

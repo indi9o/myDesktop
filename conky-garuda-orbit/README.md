@@ -2,9 +2,9 @@
 
 [Kembali ke galeri tema](../README.md#galeri-tema)
 
-**Indonesia · retro · astronot · orbit.** Garuda Orbit adalah konsep misi antariksa fiktif dengan wallpaper **Majapahit Nebula**. Astronot mengenakan emblem dada emas-perunggu yang diadaptasi dari referensi lambang Majapahit pengguna, bendera merah-putih di lengan, dan detail batik di pergelangan. Ubur-ubur bercahaya, galaksi, serta asteroid mengisi sisi kanan. Ilustrasi sinematik berwarna biru gelap dan emas menyisakan ruang kosong di kiri untuk widget. Wallpaper merupakan ilustrasi artistik, bukan foto misi antariksa.
+**Indonesia · retro · astronot · orbit.** Garuda Orbit memakai wallpaper **Lapang**: astronot Indonesia dan ubur-ubur bercahaya tampak kecil serta jauh di sisi kanan. Sekitar 65–70% komposisi berupa ruang angkasa tenang; galaksi redup, bintang jarang, dan asteroid minimal memberi kesan layar lebih luas. Warna biru gelap–emas, bendera merah-putih, serta detail batik dipertahankan. Varian ini tidak memakai emblem Majapahit. Layout dan warna Conky tetap sama.
 
-[Wallpaper Majapahit Nebula](theme/garuda-orbit-majapahit-wallpaper.png) menjadi latar bawaan. [Nebula tanpa emblem](theme/garuda-orbit-nebula-wallpaper.png) tetap tersedia. [Poster retro sebelumnya](theme/garuda-orbit-wallpaper.png), dengan orbit emas dan kepulauan Indonesia, tetap disimpan sebagai alternatif.
+[Wallpaper Lapang](theme/garuda-orbit-lapang-wallpaper.png) menjadi latar bawaan. Varian sebelumnya tetap tersedia sebagai alternatif: [Majapahit Nebula](theme/garuda-orbit-majapahit-wallpaper.png), [Nebula tanpa emblem](theme/garuda-orbit-nebula-wallpaper.png), dan [poster retro](theme/garuda-orbit-wallpaper.png). Wallpaper adalah ilustrasi artistik, bukan foto misi antariksa.
 
 Panel kiri memakai jam piksel besar di atas; singkatan hari Indonesia disusun vertikal di samping tanggal, bulan, dan suhu. Cuaca Malang berada di bawahnya, diikuti informasi memori dan penyimpanan yang dipisahkan garis tipis. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipertahankan pada teks dan angka; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
 
@@ -106,7 +106,8 @@ Mengedit source proyek tidak langsung mengubah salinan terpasang; jalankan kemba
 | `theme/Visualizer.conf` / `theme/visualizer.lua` | Batang spektrum transparan pada 20 FPS |
 | `theme/metrics.py` | Kolektor metrik dan cuaca |
 | `theme/start.sh` | Peluncur dan deteksi lebar monitor |
-| `theme/garuda-orbit-majapahit-wallpaper.png` | Wallpaper bawaan: emblem Majapahit pada dada astronot |
+| `theme/garuda-orbit-lapang-wallpaper.png` | Wallpaper bawaan: antariksa luas, astronot kecil tanpa emblem |
+| `theme/garuda-orbit-majapahit-wallpaper.png` | Alternatif Majapahit Nebula |
 | `theme/garuda-orbit-nebula-wallpaper.png` | Alternatif Nebula tanpa emblem |
 | `theme/garuda-orbit-wallpaper.png` | Alternatif poster astronot retro dan orbit Indonesia |
 | `install.py` / `restore.py` | Pemasangan, cadangan, dan pemulihan |
@@ -120,4 +121,4 @@ python3 -m unittest discover -s tests -v
 
 Tes memeriksa pemetaan nada ke pita frekuensi, kembali aktif setelah senyap, batas nilai batang, kegagalan sumber audio, serta penyimpanan posisi. Folder tes tersedia dalam source repositori.
 
-Wallpaper dibuat dengan ImageGen; prompt varian Majapahit tersimpan di [majapahit-wallpaper-prompt.txt](theme/majapahit-wallpaper-prompt.txt), prompt Nebula di [nebula-wallpaper-prompt.txt](theme/nebula-wallpaper-prompt.txt) dan prompt poster sebelumnya di [wallpaper-prompt.txt](theme/wallpaper-prompt.txt). Paket tidak menyertakan kredensial, log sesi, atau cadangan pribadi.
+Wallpaper dibuat dengan ImageGen; prompt Lapang tersimpan di [lapang-wallpaper-prompt.txt](theme/lapang-wallpaper-prompt.txt), prompt varian Majapahit di [majapahit-wallpaper-prompt.txt](theme/majapahit-wallpaper-prompt.txt), prompt Nebula di [nebula-wallpaper-prompt.txt](theme/nebula-wallpaper-prompt.txt) dan prompt poster sebelumnya di [wallpaper-prompt.txt](theme/wallpaper-prompt.txt). Paket tidak menyertakan kredensial, log sesi, atau cadangan pribadi.
