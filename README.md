@@ -38,8 +38,8 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
   <tr>
     <td width="50%" valign="top">
       <strong>Nusantara</strong><br>
-      <sub>Gunung berapi · ornamen kawung · bahasa Indonesia</sub><br><br>
-      <a href="docs/images/conky-nusantara-preview.png"><img src="docs/images/thumbnails/conky-nusantara-preview.jpg" width="100%" alt="Nusantara: lanskap gunung berapi, jam serif, dan metrik berbahasa Indonesia"></a><br><br>
+      <sub>Gunung berapi · panel kiri · aksen batik kawung</sub><br><br>
+      <a href="docs/images/conky-nusantara-preview.png"><img src="docs/images/thumbnails/conky-nusantara-preview.jpg" width="100%" alt="Nusantara: jam dan cuaca di kiri, metrik sistem di atas, dengan aksen kawung"></a><br><br>
       <a href="conky-nusantara/README.md#pemasangan">Pemasangan</a> · <a href="conky-nusantara/">Source</a>
     </td>
     <td width="50%"></td>

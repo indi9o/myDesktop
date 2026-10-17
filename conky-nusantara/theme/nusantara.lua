@@ -1,12 +1,12 @@
 require 'cairo'
 require 'cairo_xlib'
 local home=os.getenv('HOME')
-local p={ivory='F0E7D4',gold='CDB37B',red='B9684F',sage='A6B8A6',muted='82978B',dark='102019'}
+local p={ivory='F0E7D4',gold='CDB37B',red='DC8068',sage='BECAB4',muted='A6B5A6',dark='102019'}
 local function color(cr,h,a)
  cairo_set_source_rgba(cr,tonumber(h:sub(1,2),16)/255,tonumber(h:sub(3,4),16)/255,tonumber(h:sub(5,6),16)/255,a or 1)
 end
-local function text(cr,x,y,value,size,h,family)
- cairo_select_font_face(cr,family or 'DejaVu Sans Mono',CAIRO_FONT_SLANT_NORMAL,CAIRO_FONT_WEIGHT_NORMAL)
+local function text(cr,x,y,value,size,h,family,bold)
+ cairo_select_font_face(cr,family or 'DejaVu Sans Mono',CAIRO_FONT_SLANT_NORMAL,bold and CAIRO_FONT_WEIGHT_BOLD or CAIRO_FONT_WEIGHT_NORMAL)
  cairo_set_font_size(cr,size);color(cr,h);cairo_move_to(cr,x,y);cairo_show_text(cr,tostring(value))
 end
 local function tracked(cr,x,y,value,size,gap,h)
@@ -30,40 +30,43 @@ local function read_data()
  if f then for l in f:lines() do local k,v=l:match('^([^=]+)=(.*)$');if k then d[k]=v end end;f:close()end
  return setmetatable(d,{__index=function()return '--'end})
 end
-local function metric(cr,x,label,value,detail)
- tracked(cr,x,838,label,10,1.8,p.sage)
- text(cr,x,884,value,29,p.ivory,'DejaVu Sans')
- text(cr,x,916,detail,10,p.muted)
+local function metric(cr,x,label,value,h)
+ text(cr,x,34,label,13,p.gold,'DejaVu Serif',true)
+ text(cr,x+55,34,value,19,h,'DejaVu Serif',true)
 end
 function conky_nusantara()
  if not conky_window then return end
  local cs=cairo_xlib_surface_create(conky_window.display,conky_window.drawable,conky_window.visual,conky_window.width,conky_window.height)
  local cr=cairo_create(cs);local scale=(tonumber(os.getenv('NUSANTARA_WIDTH')) or 1920)/1920;cairo_scale(cr,scale,scale)
  local d=read_data()
- tracked(cr,111,83,'NUSANTARA',20,5,p.ivory)
- rule(cr,112,110,158,110,.8)
- tracked(cr,179,114,'RUANG DESKTOP',9,2,p.gold)
+ -- Orbit layout: time/date/weather on the left; essential metrics across the top.
+ -- Brick red, warm ivory, batik gold, serif lettering and kawung ornaments.
+ color(cr,p.dark,.82);cairo_rectangle(cr,640,0,1210,58);cairo_fill(cr)
+ metric(cr,680,'CPU',d.cpu..'%',p.sage)
+ metric(cr,875,'RAM',d.ram..'%',p.ivory)
+ metric(cr,1070,'SSD',d.disk..'%',p.sage)
+ text(cr,1445,34,'MENYALA',12,p.gold,'DejaVu Serif',true)
+ text(cr,1550,34,d.uptime,18,p.ivory,'DejaVu Serif',true)
+ tracked(cr,58,56,'NUSANTARA',14,4,p.gold)
+ ornament(cr,365,49,20)
+ text(cr,49,196,os.date('%H.%M'),104,p.red,'DejaVu Serif',true)
+ text(cr,59,226,'WIB',10,p.gold)
  local days={'MINGGU','SENIN','SELASA','RABU','KAMIS','JUMAT','SABTU'}
  local months={'JANUARI','FEBRUARI','MARET','APRIL','MEI','JUNI','JULI','AGUSTUS','SEPTEMBER','OKTOBER','NOVEMBER','DESEMBER'}
- tracked(cr,115,221,days[tonumber(os.date('%w'))+1]..', '..os.date('%d')..' '..months[tonumber(os.date('%m'))]..' '..os.date('%Y'),11,1.9,p.sage)
- text(cr,95,382,os.date('%H.%M'),146,p.ivory,'DejaVu Serif')
- text(cr,600,383,'WIB',12,p.gold)
- tracked(cr,116,431,'MALANG / JAWA TIMUR',11,2,p.gold)
- text(cr,113,503,d.temperature..'°C',34,p.ivory,'DejaVu Sans')
- text(cr,230,500,d.weather,11,p.sage)
- rule(cr,115,540,400,540,.25)
- text(cr,115,579,'SUHU CPU',10,p.muted);text(cr,265,579,d.cpu_temp..'°C',12,p.sage)
- text(cr,115,614,'MENYALA',10,p.muted);text(cr,265,614,d.uptime,12,p.sage)
- for i=0,4 do ornament(cr,1780,110+i*116,34)end
- -- A quiet footer maintains legibility regardless of terrain detail.
- color(cr,p.dark,.96);cairo_rectangle(cr,70,779,1780,185);cairo_fill(cr)
- rule(cr,110,791,1810,791,.4)
- metric(cr,112,'PROSESOR',d.cpu..' %','BEBAN CPU')
- metric(cr,464,'MEMORI',d.ram_available..' GiB','TERSEDIA / '..d.ram..'% TERPAKAI')
- metric(cr,816,'PENYIMPANAN',d.disk_free..' GiB','KOSONG / '..d.disk..'% TERPAKAI')
- metric(cr,1168,'ZRAM',d.zram..' / '..d.zram_total..' GiB',d.zram_physical..' MiB RAM FISIK')
- metric(cr,1520,'SWAP SSD',d.ssd_swap..' / '..d.ssd_swap_total..' GiB','RUANG SWAP TERPAKAI')
- for i=1,4 do local x=112+352*i-30;rule(cr,x,822,x,925,.15)end
- for i=0,12 do ornament(cr,130+i*135,980,15)end
+ text(cr,58,278,days[tonumber(os.date('%w'))+1]..', '..os.date('%d'),29,p.ivory,'DejaVu Serif',true)
+ text(cr,58,318,months[tonumber(os.date('%m'))]..' '..os.date('%Y'),22,p.gold,'DejaVu Serif')
+ text(cr,58,380,d.temperature..'°C',37,p.sage,'DejaVu Serif',true)
+ tracked(cr,58,414,'MALANG / JAWA TIMUR',10,1.2,p.gold)
+ text(cr,58,441,d.weather,11,p.sage)
+ rule(cr,58,470,353,470,.5);ornament(cr,378,470,15)
+ tracked(cr,58,509,'MEMORI TERSEDIA',10,1.3,p.gold)
+ text(cr,58,549,d.ram_available..' GiB',28,p.ivory,'DejaVu Serif')
+ text(cr,58,591,'ZRAM',11,p.sage);text(cr,187,591,d.zram..' / '..d.zram_total..' GiB',13,p.ivory)
+ text(cr,58,623,'SWAP SSD',11,p.gold);text(cr,187,623,d.ssd_swap..' / '..d.ssd_swap_total..' GiB',13,p.ivory)
+ text(cr,58,653,'ZRAM DI RAM  '..d.zram_physical..' MiB',10,p.muted)
+ rule(cr,58,683,353,683,.5);ornament(cr,378,683,15)
+ tracked(cr,58,722,'PENYIMPANAN KOSONG',10,1.3,p.gold)
+ text(cr,58,762,d.disk_free..' GiB',28,p.ivory,'DejaVu Serif')
+ text(cr,58,807,'SUHU CPU  '..d.cpu_temp..'°C',12,p.sage)
  cairo_destroy(cr);cairo_surface_destroy(cs)
 end
