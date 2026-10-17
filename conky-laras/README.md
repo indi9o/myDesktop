@@ -4,9 +4,13 @@
 
 **Persawahan Nusantara · senja · jam serif.** Laras memadukan ilustrasi terasering saat senja dengan warna hijau tua, putih gading, dan emas hangat. Latar merupakan interpretasi artistik suasana pedesaan Jawa dan Bali, bukan foto atau dokumentasi lokasi tertentu.
 
-Jam dan tanggal Indonesia berada di tengah atas, dengan cuaca Malang di bawahnya. Lima kelompok metrik di bagian bawah menampilkan CPU dan suhu, memori tersedia, penyimpanan kosong, zram, serta swap SSD. Uptime berada di kanan atas. Semua elemen digambar langsung di atas wallpaper tanpa panel latar; garis tipis di bawah tiga metrik pertama menunjukkan persentase CPU, RAM terpakai, dan disk terpakai.
+Jam serif berada di dalam **dial waktu** di sisi kiri: 60 garis penanda menunjukkan menit, busur emas bertambah sepanjang jam, dan titik kecil mengitari lingkaran menurut waktu 24 jam. Tanggal berada di bawah dial; cuaca Malang menjadi komposisi terpisah di sampingnya.
 
-Tema ini statis. Metrik diperbarui setiap tiga detik; cuaca setiap 15 menit. Tidak ada visualizer audio atau pengambilan suara. Membuat atau mengedit source tidak mengubah desktop aktif; perubahan diterapkan setelah installer dijalankan.
+Di kanan atas, grafik **Denyut Mesin** memperlihatkan perubahan beban CPU. Tiga meter **bulir padi** menunjukkan CPU, RAM, dan SSD: 20 bulir masing-masing mewakili lima persen. Warna bergeser dari emas ke amber mulai 75%, lalu merah bata mulai 90%. RAM tersedia, ruang penyimpanan kosong, dan suhu CPU ditampilkan di dekat meter masing-masing.
+
+Bagian bawah berupa catatan lapangan ringkas: ornamen tangkai padi, zram beserta RAM fisiknya, swap SSD, serta lama menyala. Tidak ada panel latar atau deretan lima kolom seragam. Wallpaper persawahan tetap sama.
+
+Metrik dan gambar Conky diperbarui setiap tiga detik; cuaca setiap 15 menit. Tidak ada loop animasi cepat, visualizer audio, atau pengambilan suara. Membuat atau mengedit source tidak mengubah desktop aktif; perubahan diterapkan setelah installer dijalankan.
 
 ## Kebutuhan
 
@@ -54,6 +58,7 @@ Pemulihan mengembalikan wallpaper dan autostart sebelumnya. Untuk tema myDesktop
 - Untuk mengganti kota, ubah koordinat pada `theme/metrics.py` serta label `MALANG` pada `theme/laras.lua`.
 - Jam dan tanggal mengikuti zona waktu lokal komputer.
 - Warna, ukuran, susunan widget, dan ornamen padi diatur pada `theme/laras.lua`.
+- Grafik CPU menyimpan maksimal 60 sampel berjarak tiga detik di memori (sekitar tiga menit). Ketika baru berjalan, grafik memakai sampel yang sudah tersedia, dengan durasi sebenarnya tertulis di bawahnya; sebelum dua sampel tersedia, tampil pesan menunggu. Skala vertikal tetap 0–100%. Riwayat dimulai ulang bersama kolektor.
 - Kolektor metrik berhenti ketika proses Conky utama Laras yang diluncurkan oleh `start.sh` berakhir.
 
 Log tersedia di `~/.cache/conky-laras/`. Jalankan ulang installer setelah mengubah source untuk memperbarui salinan terpasang.
@@ -81,7 +86,7 @@ Builder memeriksa sintaks Python dan shell sebelum membuat arsip. Perubahan visu
 | Lokasi | Kegunaan |
 |---|---|
 | `theme/Laras.conf` | Konfigurasi Conky |
-| `theme/laras.lua` | Jam serif, tanggal, cuaca, dan metrik |
+| `theme/laras.lua` | Dial waktu, cuaca, meter bulir padi, dan grafik CPU |
 | `theme/metrics.py` | Kolektor sistem dan cuaca |
 | `theme/start.sh` | Peluncur, penguncian, dan deteksi lebar monitor |
 | `theme/laras-wallpaper.png` | Ilustrasi terasering senja |

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Small local metrics collector. No external packages; weather refreshes every 15 min."""
+from collections import deque
 import json
 import os
 from pathlib import Path
@@ -95,6 +96,8 @@ if __name__ == '__main__':
         raise SystemExit(0)
     threading.Thread(target=refresh_weather, daemon=True).start()
     previous = cpu_times()
+    history = deque(maxlen=60)
+    time.sleep(1)
     while True:
         parent = os.environ.get('LARAS_PARENT_PID')
         if parent and not Path('/proc', parent).exists():
@@ -105,6 +108,8 @@ if __name__ == '__main__':
             delta = current[0] - previous[0]
             result['cpu'] = str(round(100 * (1 - (current[1] - previous[1]) / delta))) if delta else '0'
             previous = current
+            history.append(result['cpu'])
+            result['cpu_hist'] = ','.join(history)
             tmp = BASE / 'metrics.tmp'
             tmp.write_text('\n'.join(f'{k}={v}' for k, v in result.items()) + '\n')
             tmp.replace(BASE / 'metrics.txt')

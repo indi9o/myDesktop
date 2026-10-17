@@ -23,4 +23,5 @@ Metrik sistem diperbarui setiap 3 detik; cuaca Malang dari Open-Meteo setiap
 untuk mengganti kota. Tema dan paket tidak menyertakan kredensial atau data
 pribadi. Lihat README.md untuk panduan lengkap.
 
-Jam serif di tengah atas; metrik transparan di bawah. Tema statis tanpa audio.
+Dial waktu di kiri, cuaca di samping, meter bulir padi dan riwayat CPU di kanan.
+Diperbarui setiap 3 detik tanpa audio; wallpaper persawahan tetap statis.
