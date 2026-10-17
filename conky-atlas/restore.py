@@ -8,7 +8,7 @@ for proc in Path('/proc').iterdir():
     if not proc.name.isdigit():continue
     try:
         args=(proc/'cmdline').read_bytes().split(b'\0')
-        if str(base/'metrics.py').encode() in args or str(base/'Atlas.conf').encode() in args:
+        if any(str(base/name).encode() in args for name in ['metrics.py','Atlas.conf','AtlasLive.conf']):
             os.kill(int(proc.name),signal.SIGTERM)
     except OSError:pass
 startup=Path.home()/'.config/autostart/start_conky.desktop'

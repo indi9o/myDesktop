@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Install the Atlas theme for the current Linux user; preserve previous settings."""
 from pathlib import Path
-import datetime, json, os, shutil, subprocess
+import argparse, datetime, json, os, shutil, subprocess
+parser=argparse.ArgumentParser(description='Install Atlas desktop theme')
+parser.add_argument('--live',action='store_true',help='Enable Cairo animation and start it automatically at login')
+args=parser.parse_args()
+mode='--live' if args.live else '--static'
 source = Path(__file__).resolve().parent / 'theme'
 home = Path.home()
 for command in ['conky', 'python3', 'gsettings', 'flock', 'pgrep']:
@@ -27,12 +31,12 @@ for path in source.iterdir(): shutil.copy2(path, dest/path.name)
 (dest/'backup-path').write_text(str(backup))
 shutil.copy2(Path(__file__).resolve().parent/'restore.py', dest/'restore.py')
 startup.parent.mkdir(parents=True, exist_ok=True)
-startup.write_text('[Desktop Entry]\nType=Application\nName=Conky Atlas\nExec="'+str(dest/'start.sh')+'"\nHidden=false\nX-GNOME-Autostart-enabled=true\n')
+startup.write_text('[Desktop Entry]\nType=Application\nName=Conky Atlas\nExec="'+str(dest/'start.sh')+'" '+mode+'\nHidden=false\nX-GNOME-Autostart-enabled=true\n')
 for key in ['picture-uri','picture-uri-dark']:
     subprocess.run(['gsettings','set','org.gnome.desktop.background',key,(dest/'topography-wallpaper.png').as_uri()],check=True)
 subprocess.run(['gsettings','set','org.gnome.desktop.background','picture-options','zoom'],check=True)
 cache=home/'.cache/conky-atlas';cache.mkdir(parents=True,exist_ok=True)
 with (cache/'conky.log').open('a') as log:
-    subprocess.Popen([str(dest/'start.sh')],stdout=log,stderr=log,start_new_session=True)
-print('Atlas installed. Backup:',backup)
+    subprocess.Popen([str(dest/'start.sh'),mode],stdout=log,stderr=log,start_new_session=True)
+print('Atlas installed in '+('live' if args.live else 'static')+' mode. Backup:',backup)
 print('Restore: python3 '+str(dest/'restore.py'))

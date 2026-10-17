@@ -11,6 +11,11 @@ Bukan aplikasi untuk Windows/macOS. Transparansi Conky dapat berbeda menurut des
 3. Jalankan dari sesi desktop pengguna biasa (jangan sudo):
    python3 install.py
 
+Untuk memasang Atlas Live (animasi Lua/Cairo), gunakan:
+   python3 install.py --live
+Animasi target 8 fps; update metrik tetap 3 detik. Tidak perlu pemutar video.
+Mode statis tetap tersedia melalui ~/.config/conky/Atlas/start.sh --static.
+
 Installer menyalin tema ke ~/.config/conky/Atlas, mengatur wallpaper dan autostart, lalu mengganti Conky yang sedang berjalan. Cadangan konfigurasi terdahulu ada di ~/.config/conky/Atlas-backups/. Tidak mengubah dock, ikon, atau panel GNOME.
 
 Untuk menjalankan ulang:

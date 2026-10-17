@@ -1,0 +1,21 @@
+Virtual display validation, 1920x1080. CPU is percent of one logical core for the Conky process only; compositor and GPU are excluded. Results are a short sample, not a guarantee for other hardware. Animation ran at 8 fps, GIF preview samples 2 fps. Metrics snapshot was held fixed during visual motion checks.
+{
+  "Atlas.conf": {
+    "cpu_percent_one_core": 0.17,
+    "rss_mib": 31.9,
+    "seconds": 6.0
+  },
+  "AtlasLive.conf": {
+    "cpu_percent_one_core": 3.03,
+    "rss_mib": 48.4,
+    "seconds": 11.5
+  }
+}
+
+Actual desktop sample (GNOME Wayland/XWayland; compositor and GPU excluded):
+{
+  "pid": 1406268,
+  "cpu_percent_one_core": 2.42,
+  "rss_mib": 48.8,
+  "sample_seconds": 12.0
+}
