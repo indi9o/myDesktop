@@ -9,5 +9,17 @@ Kumpulan pratinjau tampilan desktop yang disajikan bersama untuk membandingkan p
 _Avoid_: Daftar wallpaper, karena yang dibandingkan mencakup widget dan susunan informasi, bukan hanya gambar latar.
 
 **Pratinjau tema**:
-Cuplikan tampilan tema yang membantu pengguna membandingkan susunan widget dan gambar latar. Pratinjau galeri berupa gambar diam; cuplikan bergerak Atlas Live dibuka terpisah.
+Cuplikan tampilan tema yang membantu pengguna membandingkan susunan widget dan gambar latar. Pratinjau galeri berupa gambar diam; cuplikan bergerak Atlas Live dan Garuda Orbit dibuka terpisah.
 _Avoid_: Tema baru, karena sebuah pratinjau juga dapat mewakili mode berbeda dari tema yang sama.
+
+**Visualizer audio**:
+Elemen tema berupa batang spektrum yang bergerak mengikuti seluruh suara keluaran komputer, termasuk musik, video, dan notifikasi.
+_Avoid_: Indikator pemutar musik, karena sumbernya tidak terbatas pada satu aplikasi.
+
+**Visualizer senyap**:
+Keadaan visualizer audio yang tersembunyi setelah sekitar tiga detik tanpa suara keluaran; visualizer kembali terlihat ketika suara terdengar.
+_Avoid_: Pemutar dijeda, karena keadaan ini ditentukan oleh suara keluaran, bukan status aplikasi pemutar.
+
+**Posisi visualizer**:
+Lokasi visualizer yang dapat diatur dengan menyeret bingkai pengaturan dan disimpan untuk sesi berikutnya; tampilan normalnya terkunci.
+_Avoid_: Posisi pemutar, karena letak aplikasi multimedia tidak menentukan lokasi visualizer.

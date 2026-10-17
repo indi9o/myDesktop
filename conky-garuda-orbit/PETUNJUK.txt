@@ -3,7 +3,7 @@ CONKY GARUDA ORBIT — PAKET PORTABEL
 Target: Ubuntu/Debian desktop GNOME, paling sesuai layar 16:9.
 Pasang dependensi:
   sudo apt update
-  sudo apt install conky-all python3 fonts-dejavu-core x11-xserver-utils
+  sudo apt install conky-all python3 python3-numpy python3-tk pulseaudio-utils fonts-dejavu-core x11-xserver-utils
 
 Ekstrak paket, masuk ke folder Conky-GarudaOrbit, lalu jalankan tanpa sudo:
   python3 install.py
@@ -22,3 +22,11 @@ Metrik sistem diperbarui setiap 3 detik; cuaca Malang dari Open-Meteo setiap
 15 menit. Ubah koordinat di theme/metrics.py dan label kota di theme/garuda_orbit.lua
 untuk mengganti kota. Tema dan paket tidak menyertakan kredensial atau data
 pribadi. Lihat README.md untuk panduan lengkap.
+
+VISUALIZER AUDIO
+64 batang emas-merah bata bergerak pada 20 FPS mengikuti keluaran audio utama.
+Menghilang setelah sekitar 3 detik senyap. Mikrofon tidak dipakai.
+Atur posisi melalui menu aplikasi "Garuda Orbit — Atur visualizer", atau:
+  python3 ~/.config/conky/GarudaOrbit/visualizer.py --configure
+Seret area batang lalu Simpan posisi. Posisi awal memulihkan letak bawaan.
+Posisi disimpan di ~/.config/garuda-orbit/visualizer-position.json.

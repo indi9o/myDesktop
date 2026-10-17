@@ -8,12 +8,15 @@ for proc in Path('/proc').iterdir():
     if not proc.name.isdigit():continue
     try:
         args=(proc/'cmdline').read_bytes().split(b'\0')
-        if str(base/'metrics.py').encode() in args or str(base/'GarudaOrbit.conf').encode() in args:
+        if any(str(base/name).encode() in args for name in ['metrics.py','visualizer.py','GarudaOrbit.conf','Visualizer.conf']):
             os.kill(int(proc.name),signal.SIGTERM)
     except OSError:pass
 startup=Path.home()/'.config/autostart/start_conky.desktop'
 if state['startup_existed']:shutil.copy2(backup/'start_conky.desktop',startup)
 elif startup.exists():startup.unlink()
+editor=Path.home()/'.local/share/applications/garuda-orbit-visualizer.desktop'
+if state.get('editor_existed'):shutil.copy2(backup/'garuda-orbit-visualizer.desktop',editor)
+elif editor.exists():editor.unlink()
 for key,value in state['wallpaper'].items():
     subprocess.run(['gsettings','set','org.gnome.desktop.background',key,value],check=True)
 if state['garuda-orbit_existed']:

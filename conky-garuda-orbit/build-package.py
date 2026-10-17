@@ -6,7 +6,7 @@ import subprocess
 import tarfile
 
 root = Path(__file__).resolve().parent
-for name in ['install.py', 'restore.py', 'theme/metrics.py']:
+for name in ['install.py', 'restore.py', 'theme/metrics.py', 'theme/visualizer.py']:
     ast.parse((root/name).read_text(), filename=name)
 subprocess.run(['sh','-n',str(root/'theme/start.sh')], check=True)
 output = root/'dist/Conky-GarudaOrbit-portable.tar.gz'

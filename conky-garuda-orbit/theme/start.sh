@@ -13,5 +13,6 @@ if command -v xrandr >/dev/null 2>&1; then
   GARUDA_ORBIT_WIDTH=$(xrandr --current 2>/dev/null | python3 -c 'import re,sys; s=sys.stdin.read(); m=re.search(r" connected primary (\d+)x",s) or re.search(r" connected (\d+)x",s); print(m.group(1) if m else 1920)')
   export GARUDA_ORBIT_WIDTH
 fi
+nohup python3 "$base/visualizer.py" --parent "$$" >"$cache/visualizer.log" 2>&1 9>&- &
 exec 9>&-
 exec conky -c "$base/GarudaOrbit.conf"

@@ -4,7 +4,7 @@ Konfigurasi dan tema desktop Linux pribadi.
 
 ## Galeri tema
 
-Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; gambar Atlas Live membuka animasinya.
+Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; gambar Atlas Live dan Garuda Orbit membuka animasinya.
 
 <table>
   <tr>
@@ -16,9 +16,9 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
     </td>
     <td width="50%" valign="top">
       <strong>Garuda Orbit</strong><br>
-      <sub>Indonesia · astronot retro · jam piksel</sub><br><br>
-      <a href="docs/images/conky-garuda-orbit-preview.png"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit: astronot merah-putih, orbit emas, jam piksel dan statistik transparan"></a><br><br>
-      <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="conky-garuda-orbit/">Source</a>
+      <sub>Astronot retro · jam piksel · visualizer audio</sub><br><br>
+      <a href="docs/images/conky-garuda-orbit-audio-preview.gif"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit: astronot merah-putih, jam piksel, dan visualizer audio emas-merah bata"></a><br><br>
+      <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="docs/images/conky-garuda-orbit-audio-preview.gif">Lihat animasi</a> · <a href="conky-garuda-orbit/">Source</a>
     </td>
   </tr>
   <tr>
