@@ -6,7 +6,7 @@
 
 [Wallpaper Nebula](theme/garuda-orbit-nebula-wallpaper.png) menjadi latar bawaan. [Poster retro sebelumnya](theme/garuda-orbit-wallpaper.png), dengan orbit emas dan kepulauan Indonesia, tetap disimpan sebagai alternatif.
 
-Jam piksel, tanggal Indonesia, dan cuaca Malang menempati sisi kiri. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipadukan dengan pemisah kawung; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
+Panel kiri memakai jam piksel besar di atas; singkatan hari Indonesia disusun vertikal di samping tanggal, bulan, dan suhu. Cuaca Malang berada di bawahnya, diikuti informasi memori dan penyimpanan yang dipisahkan garis tipis. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipertahankan pada teks dan angka; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
 
 Wallpaper tetap statis; visualizer audio bergerak pada 20 FPS saat ada suara, sementara metrik diperbarui setiap tiga detik. Desktop aktif baru diganti setelah installer dijalankan.
 
@@ -80,7 +80,7 @@ python3 ~/.config/conky/GarudaOrbit/restore.py
 - Persentase disk mengikuti perhitungan `df`, berdasarkan ruang yang tersedia untuk pengguna.
 - Cuaca [Open-Meteo](https://open-meteo.com/) memakai koordinat Malang dan diperbarui setiap 15 menit. Data yang tidak tersedia atau lebih tua dari dua jam ditandai `CUACA TIDAK TERSEDIA`.
 - Untuk mengganti kota, ubah koordinat di `theme/metrics.py` dan label kota di `theme/garuda_orbit.lua` sebelum memasang.
-- Jam mengikuti waktu lokal sistem. Label bawaan adalah `WAKTU INDONESIA BARAT`; sesuaikan label dalam `theme/garuda_orbit.lua` jika memakai zona waktu lain.
+- Jam dan tanggal mengikuti waktu lokal sistem; singkatan hari memakai tiga huruf bahasa Indonesia (misalnya `SAB` untuk Sabtu).
 - Warna dan ornamen diatur di `theme/garuda_orbit.lua`; wallpaper tersedia sebagai berkas terpisah.
 - Pembacaan suhu bergantung pada sensor kernel.
 
