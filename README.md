@@ -2,6 +2,10 @@
 
 Konfigurasi dan tema desktop Linux pribadi.
 
+![Pratinjau Conky Orbit: jam piksel, tanggal, cuaca, metrik sistem, dan wallpaper astronaut](docs/images/conky-orbit-preview.png)
+
+*Pratinjau tema pada resolusi 1920 × 1080. Dock dan panel sistem mengikuti konfigurasi desktop masing-masing.*
+
 ## Conky Orbit
 
 Tema desktop dengan jam piksel, tanggal, cuaca Malang, wallpaper astronaut, serta metrik CPU, RAM, disk, uptime, swap SSD, dan zram. Widget membaca metrik sistem setiap tiga detik; cuaca diperbarui setiap 15 menit.
