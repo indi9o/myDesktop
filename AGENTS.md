@@ -45,8 +45,9 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
   vertikal, tanggal/bulan/suhu di sampingnya, lalu cuaca dan metrik di bawah.
   CPU, RAM, SSD, serta uptime berjajar di atas tanpa background panel.
 - Wallpaper Garuda Orbit bawaan adalah
-  `theme/garuda-orbit-lapang-wallpaper.png`: astronot kecil di kanan tanpa emblem
-  Majapahit, dengan ruang angkasa tenang yang dominan. Varian lama tetap tersedia
+  `theme/garuda-orbit-lapang-v2-wallpaper.png`: astronot di kanan setinggi sekitar
+  sepertiga layar, tanpa emblem Majapahit, dengan ruang angkasa tenang yang dominan.
+  Varian lama tetap tersedia
   sebagai alternatif. Pertahankan ruang gelap di kiri untuk widget.
 
 ## Source dan desktop terpasang

@@ -41,7 +41,7 @@ startup.write_text('[Desktop Entry]\nType=Application\nName=Conky GarudaOrbit\nE
 editor.parent.mkdir(parents=True, exist_ok=True)
 editor.write_text('[Desktop Entry]\nType=Application\nName=Garuda Orbit — Atur visualizer\nComment=Geser dan simpan posisi visualizer audio\nExec=python3 \"'+str(dest/'visualizer.py')+'\" --configure\nIcon=audio-x-generic\nTerminal=false\nCategories=Settings;\n')
 for key in ['picture-uri','picture-uri-dark']:
-    subprocess.run(['gsettings','set','org.gnome.desktop.background',key,(dest/'garuda-orbit-lapang-wallpaper.png').as_uri()],check=True)
+    subprocess.run(['gsettings','set','org.gnome.desktop.background',key,(dest/'garuda-orbit-lapang-v2-wallpaper.png').as_uri()],check=True)
 subprocess.run(['gsettings','set','org.gnome.desktop.background','picture-options','zoom'],check=True)
 cache=home/'.cache/conky-garuda-orbit';cache.mkdir(parents=True,exist_ok=True)
 with (cache/'conky.log').open('a') as log:
