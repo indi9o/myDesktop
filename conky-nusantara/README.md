@@ -4,7 +4,7 @@
 
 Tema desktop bernuansa Indonesia dengan hijau hutan, merah bata, dan emas. Latar gunung berapi merupakan ilustrasi artistik yang terinspirasi Jawa Timur; ornamen empat kelopak terinspirasi motif kawung. Tema ini tidak dimaksudkan sebagai peta atau dokumentasi lokasi tertentu.
 
-Jam memakai pemisah titik, tanggal dan keterangan cuaca berbahasa Indonesia, serta label metrik yang ringkas. Susunan mengikuti Orbit: jam, tanggal, dan cuaca Malang di kiri; CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas. RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU berada di panel kiri. Persentase RAM dan SSD menunjukkan ruang terpakai. Tipografi serif dengan merah bata, putih gading, dan emas serta pemisah kawung memberi nuansa Nusantara; huruf tetap Latin agar mudah dibaca. Tema ini statis dan tidak mengubah mode Atlas Live yang mungkin sedang dipakai sampai installer dijalankan.
+Jam memakai pemisah titik, tanggal dan keterangan cuaca berbahasa Indonesia, serta label metrik yang ringkas. Susunan mengikuti Orbit: jam, tanggal, dan cuaca Malang di kiri; CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU berada di panel kiri. Persentase RAM dan SSD menunjukkan ruang terpakai. Tipografi serif dengan merah bata, putih gading, dan emas serta pemisah kawung memberi nuansa Nusantara; huruf tetap Latin agar mudah dibaca. Tema ini statis dan tidak mengubah mode Atlas Live yang mungkin sedang dipakai sampai installer dijalankan.
 
 ## Kebutuhan
 

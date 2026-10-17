@@ -41,7 +41,6 @@ function conky_nusantara()
  local d=read_data()
  -- Orbit layout: time/date/weather on the left; essential metrics across the top.
  -- Brick red, warm ivory, batik gold, serif lettering and kawung ornaments.
- color(cr,p.dark,.82);cairo_rectangle(cr,640,0,1210,58);cairo_fill(cr)
  metric(cr,680,'CPU',d.cpu..'%',p.sage)
  metric(cr,875,'RAM',d.ram..'%',p.ivory)
  metric(cr,1070,'SSD',d.disk..'%',p.sage)
