@@ -6,15 +6,16 @@
 
 ## Komposisi ringkas
 
-Satu kelompok transparan di kiri atas menyisakan persawahan sebagai pusat perhatian. Pada layar 1920×1080, isi widget memakai area sekitar **300×350 px**, dengan margin awal 64 px dari kiri dan atas. Tidak ada widget di kanan atau di bawah layar.
+Satu kelompok transparan di kiri atas menyisakan persawahan sebagai pusat perhatian. Pada layar 1920×1080, isi widget memakai area sekitar **300×440 px**, dengan margin awal 64 px dari kiri dan atas. Tidak ada widget di kanan atau di bawah layar.
 
 - Jam serif **56 px** berada di dalam dial tipis berdiameter sekitar 190 px.
 - Ikon matahari emas dan bulan sabit menjadi aksen kecil pada lintasan; ikon aktif lebih terang.
 - Tanggal memakai **13 px**, cuaca Malang **13–15 px**, serta label CPU/RAM/SSD **12 px** dan persentase **16 px**.
 - CPU, RAM, dan SSD disajikan dalam satu baris ringkas. Warna angka bergeser ke amber mulai 75% dan merah bata mulai 90%.
-- Grafik CPU, meter bulir padi, detail zram/swap, uptime, dan teks dekoratif tidak ditampilkan pada komposisi utama.
+- Tiga baris tambahan menampilkan **ZRAM**, **SWAP SSD**, dan **UPTIME**, dengan label 12 px dan nilai 13 px. Zram dan swap ditulis sebagai GiB terpakai / total; uptime menunjukkan lama komputer menyala.
+- Grafik CPU, meter bulir padi, dan teks dekoratif tetap disembunyikan.
 
-Penskalaan mengikuti lebar dan tinggi monitor utama, dengan acuan 1920×1080. Jendela Conky sendiri dibatasi sekitar 430×430 px pada ukuran acuan, alih-alih memenuhi layar. Wallpaper, palet, dan pembaruan tiga detik tetap dipertahankan.
+Penskalaan mengikuti lebar dan tinggi monitor utama, dengan acuan 1920×1080. Jendela Conky sendiri dibatasi sekitar 430×520 px pada ukuran acuan, alih-alih memenuhi layar. Wallpaper, palet, dan pembaruan tiga detik tetap dipertahankan.
 
 ## Lintasan matahari–bulan
 
@@ -64,7 +65,7 @@ Pemulihan mengembalikan wallpaper dan autostart sebelumnya. Untuk tema myDesktop
 
 - RAM tersedia dibaca dari `MemAvailable`; persentase RAM terpakai dihitung dari total dikurangi nilai tersebut.
 - Persentase penyimpanan mengikuti perhitungan `df` untuk filesystem `/`, berdasarkan ruang yang tersedia bagi pengguna.
-- Kolektor masih menyediakan detail zram, swap, suhu CPU, uptime, dan riwayat CPU di `~/.cache/conky-laras/metrics.txt`. Komposisi ringkas tidak menggambarkan data tambahan ini.
+- Kolektor masih menyediakan detail zram, swap, suhu CPU, uptime, dan riwayat CPU di `~/.cache/conky-laras/metrics.txt`. Komposisi ringkas menampilkan ringkasan zram/swap dan uptime; detail sensor, RAM fisik zram, serta riwayat CPU tidak digambar.
 - Cuaca memakai koordinat Malang melalui [Open-Meteo](https://open-meteo.com/). Data tidak tersedia atau lebih tua dari dua jam ditandai `CUACA TIDAK TERSEDIA`.
 - Untuk mengganti kota, ubah koordinat dan zona waktu API pada `theme/metrics.py`, `ZONE` pada `theme/daycycle.py`, serta label `MALANG` pada `theme/laras.lua`.
 - Jam dan tanggal mengikuti zona waktu lokal komputer.

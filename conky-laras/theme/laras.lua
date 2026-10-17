@@ -94,7 +94,7 @@ function conky_laras()
  local scale=math.min((tonumber(os.getenv('LARAS_WIDTH')) or 1920)/1920,(tonumber(os.getenv('LARAS_HEIGHT')) or 1080)/1080)
  cairo_scale(cr,scale,scale);cairo_translate(cr,64,64)
  local d=data()
- -- All visible widgets occupy one 300 x 350 reference area, leaving the landscape clear.
+ -- All visible widgets occupy one 300 x 440 reference area, leaving the landscape clear.
  dial(cr,150,110,d)
  local days={'MINGGU','SENIN','SELASA','RABU','KAMIS','JUMAT','SABTU'}
  local months={'JAN','FEB','MAR','APR','MEI','JUN','JUL','AGU','SEP','OKT','NOV','DES'}
@@ -107,6 +107,17 @@ function conky_laras()
   local x=55+(i-1)*95
   centered(cr,x,319,row[1],12,p.muted)
   centered(cr,x,343,row[2]..'%',16,hue(row[2]))
+ end
+ line(cr,20,364,280,364,.18)
+ local details={
+  {'ZRAM',d.zram..' / '..d.zram_total..' GiB'},
+  {'SWAP SSD',d.ssd_swap..' / '..d.ssd_swap_total..' GiB'},
+  {'UPTIME',d.uptime},
+ }
+ for i,row in ipairs(details)do
+  local y=387+(i-1)*23
+  text(cr,24,y,row[1],12,p.muted)
+  text(cr,118,y,row[2],13,p.ivory)
  end
  cairo_destroy(cr);cairo_surface_destroy(cs)
 end

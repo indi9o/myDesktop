@@ -35,10 +35,10 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
   Ubah urutan hanya bila diminta pengguna.
 - Gunakan thumbnail statis 960×540 yang ditautkan ke gambar penuh atau GIF.
   Hindari memuat animasi besar langsung sebagai thumbnail galeri.
-- Laras memakai satu kelompok ringkas di kiri atas (sekitar 300×350 px pada
+- Laras memakai satu kelompok ringkas di kiri atas (sekitar 300×440 px pada
   layar 1920×1080), jam 56 px, dan teks pendukung 12–16 px. Pertahankan dial
-  matahari–bulan sebagai aksen; grafik CPU, zram/swap, uptime, dan widget bawah
-  tidak ditampilkan kecuali pengguna meminta perubahan komposisi.
+  matahari–bulan sebagai aksen; zram/swap dan uptime berada pada tiga baris kecil
+  di bawah metrik inti. Grafik CPU dan widget di bawah layar tidak ditampilkan.
 - Garuda Orbit memakai palet merah bata `E1785F`, putih gading `F5E8C9`,
   emas `D8B477`, hijau giok `A6C8AF`, dan warna redup `A7B8AF`.
 - Panel kiri Garuda Orbit mengikuti Orbit: jam besar, singkatan hari Indonesia

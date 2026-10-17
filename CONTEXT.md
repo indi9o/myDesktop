@@ -25,5 +25,5 @@ Lokasi visualizer yang dapat diatur dengan menyeret bingkai pengaturan dan disim
 _Avoid_: Posisi pemutar, karena letak aplikasi multimedia tidak menentukan lokasi visualizer.
 
 **Komposisi ringkas Laras**:
-Kelompok kecil jam, tanggal, cuaca, dan metrik inti yang memberi ruang dominan bagi wallpaper persawahan. Dial matahari–bulan menjadi aksen; detail pemantauan sistem berada di luar tampilan utama.
+Kelompok kecil jam, tanggal, cuaca, metrik inti, serta ringkasan zram, swap, dan uptime yang memberi ruang dominan bagi wallpaper persawahan. Dial matahari–bulan menjadi aksen; grafik dan detail sensor berada di luar tampilan utama.
 _Avoid_: Dashboard layar penuh, karena tema mengutamakan lanskap sebagai pusat perhatian.
