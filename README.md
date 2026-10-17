@@ -17,7 +17,7 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
     <td width="50%" valign="top">
       <strong>Garuda Orbit</strong><br>
       <sub>Antariksa lapang · jam piksel · visualizer audio</sub><br><br>
-      <a href="docs/images/conky-garuda-orbit-audio-preview.gif"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit Lapang: astronot kecil tanpa emblem, ruang angkasa luas, dan visualizer audio"></a><br><br>
+      <a href="docs/images/conky-garuda-orbit-audio-preview.gif"><img src="docs/images/thumbnails/conky-garuda-orbit-preview.jpg" width="100%" alt="Garuda Orbit Lapang v3: astronot tanpa emblem, ruang angkasa luas, dan visualizer audio"></a><br><br>
       <a href="conky-garuda-orbit/README.md#pemasangan">Pemasangan</a> · <a href="docs/images/conky-garuda-orbit-audio-preview.gif">Lihat animasi</a> · <a href="conky-garuda-orbit/">Source</a>
     </td>
   </tr>

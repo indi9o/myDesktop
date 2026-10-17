@@ -2,9 +2,9 @@
 
 [Kembali ke galeri tema](../README.md#galeri-tema)
 
-**Indonesia · retro · astronot · orbit.** Garuda Orbit memakai wallpaper **Lapang v2**: astronot Indonesia dan ubur-ubur bercahaya tampak kecil serta jauh di sisi kanan. Astronot dan ubur-ubur diperbesar sekitar 20% dibanding Lapang awal; tinggi astronot sekitar sepertiga layar. Sekitar 65–70% komposisi berupa ruang angkasa tenang; galaksi redup, bintang jarang, dan asteroid minimal memberi kesan layar lebih luas. Warna biru gelap–emas, bendera merah-putih, serta detail batik dipertahankan. Varian ini tidak memakai emblem Majapahit. Layout dan warna Conky tetap sama.
+**Indonesia · retro · astronot · orbit.** Garuda Orbit memakai wallpaper **Lapang v3**: astronot Indonesia dan ubur-ubur bercahaya menjadi fokus di sisi kanan. Tinggi astronot sekitar 45–50% layar, lebih besar daripada Lapang v2; ubur-ubur ikut diperbesar secara proporsional. Sekitar 65–70% komposisi berupa ruang angkasa tenang; galaksi redup, bintang jarang, dan asteroid minimal memberi kesan layar lebih luas. Warna biru gelap–emas, bendera merah-putih, serta detail batik dipertahankan. Varian ini tidak memakai emblem Majapahit. Layout dan warna Conky tetap sama.
 
-[Wallpaper Lapang v2](theme/garuda-orbit-lapang-v2-wallpaper.png) menjadi latar bawaan. [Lapang awal](theme/garuda-orbit-lapang-wallpaper.png) tetap tersedia. Varian sebelumnya tetap tersedia sebagai alternatif: [Majapahit Nebula](theme/garuda-orbit-majapahit-wallpaper.png), [Nebula tanpa emblem](theme/garuda-orbit-nebula-wallpaper.png), dan [poster retro](theme/garuda-orbit-wallpaper.png). Wallpaper adalah ilustrasi artistik, bukan foto misi antariksa.
+[Wallpaper Lapang v3](theme/garuda-orbit-lapang-v3-wallpaper.png) menjadi latar bawaan. [Lapang v2](theme/garuda-orbit-lapang-v2-wallpaper.png) tetap tersedia. [Lapang awal](theme/garuda-orbit-lapang-wallpaper.png) tetap tersedia. Varian sebelumnya tetap tersedia sebagai alternatif: [Majapahit Nebula](theme/garuda-orbit-majapahit-wallpaper.png), [Nebula tanpa emblem](theme/garuda-orbit-nebula-wallpaper.png), dan [poster retro](theme/garuda-orbit-wallpaper.png). Wallpaper adalah ilustrasi artistik, bukan foto misi antariksa.
 
 Panel kiri memakai jam piksel besar di atas; singkatan hari Indonesia disusun vertikal di samping tanggal, bulan, dan suhu. Cuaca Malang berada di bawahnya, diikuti informasi memori dan penyimpanan yang dipisahkan garis tipis. CPU, RAM, SSD, dan lama menyala (uptime) berjajar di atas tanpa latar panel. Panel kiri juga memuat RAM tersedia, zram, swap SSD, ruang disk kosong, dan suhu CPU. Persentase RAM dan SSD menunjukkan ruang terpakai. Palet merah bata, putih gading, emas, dan hijau giok dipertahankan pada teks dan angka; angka jam digambar melalui Cairo sehingga tidak memerlukan font piksel tambahan.
 
@@ -106,7 +106,8 @@ Mengedit source proyek tidak langsung mengubah salinan terpasang; jalankan kemba
 | `theme/Visualizer.conf` / `theme/visualizer.lua` | Batang spektrum transparan pada 20 FPS |
 | `theme/metrics.py` | Kolektor metrik dan cuaca |
 | `theme/start.sh` | Peluncur dan deteksi lebar monitor |
-| `theme/garuda-orbit-lapang-v2-wallpaper.png` | Wallpaper bawaan: astronot dan ubur-ubur sekitar 20% lebih besar, tanpa emblem |
+| `theme/garuda-orbit-lapang-v3-wallpaper.png` | Wallpaper bawaan: tinggi astronot sekitar 45–50% layar, tanpa emblem |
+| `theme/garuda-orbit-lapang-v2-wallpaper.png` | Alternatif Lapang v2 |
 | `theme/garuda-orbit-lapang-wallpaper.png` | Alternatif Lapang awal |
 | `theme/garuda-orbit-majapahit-wallpaper.png` | Alternatif Majapahit Nebula |
 | `theme/garuda-orbit-nebula-wallpaper.png` | Alternatif Nebula tanpa emblem |
@@ -122,4 +123,4 @@ python3 -m unittest discover -s tests -v
 
 Tes memeriksa pemetaan nada ke pita frekuensi, kembali aktif setelah senyap, batas nilai batang, kegagalan sumber audio, serta penyimpanan posisi. Folder tes tersedia dalam source repositori.
 
-Wallpaper dibuat dengan ImageGen; prompt Lapang v2 tersimpan di [lapang-v2-wallpaper-prompt.txt](theme/lapang-v2-wallpaper-prompt.txt), prompt Lapang awal di [lapang-wallpaper-prompt.txt](theme/lapang-wallpaper-prompt.txt), prompt varian Majapahit di [majapahit-wallpaper-prompt.txt](theme/majapahit-wallpaper-prompt.txt), prompt Nebula di [nebula-wallpaper-prompt.txt](theme/nebula-wallpaper-prompt.txt) dan prompt poster sebelumnya di [wallpaper-prompt.txt](theme/wallpaper-prompt.txt). Paket tidak menyertakan kredensial, log sesi, atau cadangan pribadi.
+Wallpaper dibuat dengan ImageGen; prompt Lapang v3 tersimpan di [lapang-v3-wallpaper-prompt.txt](theme/lapang-v3-wallpaper-prompt.txt), prompt Lapang v2 di [lapang-v2-wallpaper-prompt.txt](theme/lapang-v2-wallpaper-prompt.txt), prompt Lapang awal di [lapang-wallpaper-prompt.txt](theme/lapang-wallpaper-prompt.txt), prompt varian Majapahit di [majapahit-wallpaper-prompt.txt](theme/majapahit-wallpaper-prompt.txt), prompt Nebula di [nebula-wallpaper-prompt.txt](theme/nebula-wallpaper-prompt.txt) dan prompt poster sebelumnya di [wallpaper-prompt.txt](theme/wallpaper-prompt.txt). Paket tidak menyertakan kredensial, log sesi, atau cadangan pribadi.
