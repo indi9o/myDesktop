@@ -56,6 +56,20 @@ Pilih tampilan dari galeri berikut. Klik gambar untuk membuka pratinjau penuh; g
       <a href="docs/images/conky-laras-preview.png"><img src="docs/images/thumbnails/conky-laras-preview.jpg" width="100%" alt="Laras ringkas: dial matahari-bulan, jam, cuaca, dan CPU/RAM/SSD di kiri atas"></a><br><br>
       <a href="conky-laras/README.md#pemasangan">Pemasangan</a> · <a href="conky-laras/">Source</a>
     </td>
+    <td width="50%" valign="top">
+      <strong>Fosfor</strong><br>
+      <sub>Terminal minimal · fosfor hijau · osiloskop</sub><br><br>
+      <a href="docs/images/conky-fosfor-preview.png"><img src="docs/images/thumbnails/conky-fosfor-preview.jpg" width="100%" alt="Fosfor: panel kiri bergaya terminal hijau dengan jam piksel, meter sistem, dan jejak CPU, serta osiloskop Lissajous di kanan"></a><br><br>
+      <a href="conky-fosfor/README.md#pemasangan">Pemasangan</a> · <a href="conky-fosfor/">Source</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>Sawah</strong><br>
+      <sub>Terasering senja · lintasan matahari · meter bulir padi</sub><br><br>
+      <a href="docs/images/conky-sawah-preview.png"><img src="docs/images/thumbnails/conky-sawah-preview.jpg" width="100%" alt="Sawah: terasering senja dengan gunung api, jam serif, lintasan matahari, dan meter bulir padi di kiri"></a><br><br>
+      <a href="conky-sawah/README.md#pemasangan">Pemasangan</a> · <a href="conky-sawah/">Source</a>
+    </td>
     <td width="50%"></td>
   </tr>
 </table>

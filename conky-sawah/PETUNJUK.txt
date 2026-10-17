@@ -1,0 +1,34 @@
+CONKY SAWAH — PAKET PORTABEL
+
+Target: Linux desktop Ubuntu/Debian dengan GNOME. Paling cocok layar 16:9.
+Bukan aplikasi untuk Windows/macOS. Transparansi Conky dapat berbeda menurut desktop/compositor; pada Wayland Conky memakai dukungan X11/XWayland yang tersedia.
+
+1. Pasang dependensi melalui terminal:
+   sudo apt update
+   sudo apt install conky-all python3 fonts-dejavu-core x11-xserver-utils
+
+2. Ekstrak arsip, lalu buka terminal di folder Conky-Sawah.
+3. Jalankan dari sesi desktop pengguna biasa (jangan sudo):
+   python3 install.py
+
+Installer menyalin tema ke ~/.config/conky/Sawah, mengatur wallpaper dan autostart, lalu mengganti Conky yang sedang berjalan. Cadangan konfigurasi terdahulu ada di ~/.config/conky/Sawah-backups/. Tidak mengubah dock, ikon, atau panel GNOME.
+
+Untuk menjalankan ulang:
+   ~/.config/conky/Sawah/start.sh
+
+Untuk memulihkan tampilan sebelumnya:
+   python3 ~/.config/conky/Sawah/restore.py
+
+Isi:
+- Wallpaper terasering senja dengan gunung api, digambar prosedural
+- Jam serif, hari/tanggal lengkap berbahasa Indonesia, cuaca Malang
+- Lintasan matahari 24 jam: siang di atas cakrawala, malam di bawah, penanda waktu sekarang;
+  jam terbit/terbenam (format 24 jam) dihitung lokal
+- Meter CPU, RAM, SSD berupa bulir padi (jingga >= 75%, merah bata >= 90%)
+- RAM tersedia, zram, jejak RAM fisik zram, swap SSD, SSD kosong, suhu CPU, uptime
+
+Metrik sistem setiap 3 detik. Persentase RAM menggunakan MemAvailable. Cuaca Open-Meteo untuk Malang setiap 15 menit, menampilkan Cuaca Tidak Tersedia bila data tidak tersedia/kedaluwarsa. Pembacaan suhu bergantung sensor kernel.
+
+Lebar layout mengikuti monitor utama lewat xrandr. Untuk mengganti lokasi, ubah LAT, LON di theme/metrics.py dan label Malang di theme/sawah.lua sebelum memasang. Komputer tujuan tidak perlu memiliki zram; nilainya akan ditampilkan nol bila tidak ada.
+
+Paket tidak menyertakan konfigurasi pribadi, kredensial, log, atau cadangan komputer asal.
