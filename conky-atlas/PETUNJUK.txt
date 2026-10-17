@@ -1,0 +1,32 @@
+CONKY ATLAS — PAKET PORTABEL
+
+Target: Linux desktop Ubuntu/Debian dengan GNOME. Paling cocok layar 16:9.
+Bukan aplikasi untuk Windows/macOS. Transparansi Conky dapat berbeda menurut desktop/compositor; pada Wayland Conky memakai dukungan X11/XWayland yang tersedia.
+
+1. Pasang dependensi melalui terminal:
+   sudo apt update
+   sudo apt install conky-all python3 fonts-dejavu-core x11-xserver-utils
+
+2. Ekstrak arsip, lalu buka terminal di folder Conky-Atlas.
+3. Jalankan dari sesi desktop pengguna biasa (jangan sudo):
+   python3 install.py
+
+Installer menyalin tema ke ~/.config/conky/Atlas, mengatur wallpaper dan autostart, lalu mengganti Conky yang sedang berjalan. Cadangan konfigurasi terdahulu ada di ~/.config/conky/Atlas-backups/. Tidak mengubah dock, ikon, atau panel GNOME.
+
+Untuk menjalankan ulang:
+   ~/.config/conky/Atlas/start.sh
+
+Untuk memulihkan tampilan sebelumnya:
+   python3 ~/.config/conky/Atlas/restore.py
+
+Isi:
+- Jam serif besar, hari/tanggal, cuaca Malang
+- CPU, RAM, disk, uptime
+- RAM tersedia, swap SSD, zram, jejak RAM fisik zram, suhu CPU
+- Wallpaper topografi vektor generatif, source SVG disertakan
+
+Metrik sistem setiap 3 detik. Persentase RAM menggunakan MemAvailable. Cuaca Open-Meteo untuk Malang setiap 15 menit, menampilkan OFFLINE bila data tidak tersedia/kedaluwarsa. Pembacaan suhu bergantung sensor kernel.
+
+Lebar layout mengikuti monitor utama lewat xrandr. Untuk mengganti lokasi cuaca, ubah koordinat di theme/metrics.py sebelum memasang dan label MALANG di theme/atlas.lua. Komputer tujuan tidak perlu memiliki zram; nilainya akan ditampilkan nol bila tidak ada.
+
+Paket tidak menyertakan konfigurasi pribadi, kredensial, log, atau cadangan komputer asal.

@@ -4,8 +4,34 @@ Konfigurasi dan tema desktop Linux pribadi.
 
 | Tema | Gaya | Source |
 |---|---|---|
+| **Atlas** | Kontur topografi, jam serif, metrik vertikal di kanan | [`conky-atlas/`](conky-atlas/) |
 | **Horizon** | Lunar minimalis, jam tipografi besar, metrik horizontal | [`conky-horizon/`](conky-horizon/) |
 | **Orbit** | Astronaut, jam piksel retro, panel metrik di kiri | [`conky-orbit/`](conky-orbit/) |
+
+## Conky Atlas
+
+Tema dengan wallpaper kontur topografi generatif, palet charcoal–sage–tembaga, jam serif di kiri bawah, dan panel statistik vertikal di kanan. Panel menampilkan CPU, RAM tersedia, ruang disk, zram, swap SSD, dan riwayat singkat beban CPU.
+
+![Pratinjau Conky Atlas: kontur topografi, jam serif besar, dan panel metrik di kanan](docs/images/conky-atlas-preview.png)
+
+*Pratinjau render 1920 × 1080. Kontur bersifat ilustratif, bukan peta medan nyata. Angka sistem adalah cuplikan saat render; saat dipasang, metrik mengikuti komputer tujuan.*
+
+Dengan dependensi yang sama seperti Orbit, jalankan tanpa `sudo` dari sesi desktop:
+
+```bash
+cd conky-atlas
+python3 install.py
+```
+
+Untuk memulihkan wallpaper dan Conky sebelumnya:
+
+```bash
+python3 ~/.config/conky/Atlas/restore.py
+```
+
+Paket portabel: [`Conky-Atlas-portable.tar.gz`](conky-atlas/dist/Conky-Atlas-portable.tar.gz). Lihat [petunjuk Atlas](conky-atlas/PETUNJUK.txt).
+
+Wallpaper dibuat dari kurva vektor deterministik; [generator](conky-atlas/generate-wallpaper.py) dan [source SVG](conky-atlas/theme/topography-wallpaper.svg) disertakan. Pembuatan ulang wallpaper memerlukan `python3-cairo`, tetapi pemasangan tema cukup memakai berkas PNG yang sudah tersedia.
 
 ## Conky Horizon
 
