@@ -54,25 +54,59 @@ local function rice_meter(cr,x,y,label,value,detail)
  text(cr,x+414,y+2,(n and tostring(n) or '--')..'%',22,h,'DejaVu Serif')
  text(cr,x+94,y+24,detail,10,p.muted)
 end
-local function dial(cr,cx,cy)
- local minute=tonumber(os.date('%M'));local hour=tonumber(os.date('%H'))+minute/60
+local function sun_icon(cr,x,y,active)
+ color(cr,'09251B',active and .35 or .3)
+ cairo_new_path(cr);cairo_arc(cr,x+1,y+1,10,0,math.pi*2);cairo_fill(cr)
+ color(cr,p.gold,active and .14 or .025)
+ cairo_new_path(cr);cairo_arc(cr,x,y,16,0,math.pi*2);cairo_fill(cr)
+ color(cr,p.gold,active and 1 or .45)
+ cairo_new_path(cr);cairo_arc(cr,x,y,7,0,math.pi*2);cairo_fill(cr)
+ for i=0,7 do
+  local a=i*math.pi/4
+  line(cr,x+math.cos(a)*11,y+math.sin(a)*11,x+math.cos(a)*15,y+math.sin(a)*15,active and .95 or .45,p.gold,1.3)
+ end
+end
+local function moon_icon(cr,x,y,active)
+ cairo_save(cr);cairo_push_group(cr)
+ color(cr,p.ivory,active and 1 or .45)
+ cairo_new_path(cr);cairo_arc(cr,x,y,10,0,math.pi*2);cairo_fill(cr)
+ cairo_set_operator(cr,CAIRO_OPERATOR_DEST_OUT)
+ cairo_set_source_rgba(cr,0,0,0,1)
+ cairo_new_path(cr);cairo_arc(cr,x+5,y-3,9,0,math.pi*2);cairo_fill(cr)
+ cairo_set_operator(cr,CAIRO_OPERATOR_OVER);cairo_pop_group_to_source(cr);cairo_paint(cr);cairo_restore(cr)
+ if active then
+  line(cr,x+16,y-12,x+16,y-6,.8,p.ivory)
+  line(cr,x+13,y-9,x+19,y-9,.8,p.ivory)
+ end
+end
+local function dial(cr,cx,cy,d)
+ local minute=tonumber(os.date('%M'))
+ local phase=rawget(d,'solar_phase') or 'night'
+ local progress=tonumber(rawget(d,'solar_progress')) or 0
+ local sun=tonumber(rawget(d,'sun_angle')) or 0
+ local moon=tonumber(rawget(d,'moon_angle')) or math.pi
  for i=0,59 do
   local a=-math.pi/2+i*math.pi/30
-  local r=i%5==0 and 172 or 179
-  local active=i<=minute
-  line(cr,cx+math.cos(a)*r,cy+math.sin(a)*r,cx+math.cos(a)*185,cy+math.sin(a)*185,active and .85 or .2,active and p.gold or p.sage,i%5==0 and 1.5 or 1)
+  local r=i%5==0 and 176 or 181
+  line(cr,cx+math.cos(a)*r,cy+math.sin(a)*r,cx+math.cos(a)*186,cy+math.sin(a)*186,i==minute and 1 or .25,i==minute and p.ivory or p.gold,i%5==0 and 1.4 or .8)
  end
- color(cr,p.gold,.25);cairo_set_line_width(cr,1)
- cairo_new_path(cr);cairo_arc(cr,cx,cy,159,0,math.pi*2);cairo_stroke(cr)
- if minute>0 then
-  color(cr,p.gold,.85);cairo_set_line_width(cr,2)
-  cairo_new_path(cr);cairo_arc(cr,cx,cy,159,-math.pi/2,-math.pi/2+minute/60*math.pi*2);cairo_stroke(cr)
+ -- Upper horizon: the visible day or night journey. Lower horizon: the resting counterpart.
+ color(cr,phase=='day' and p.gold or p.ivory,.32);cairo_set_line_width(cr,1)
+ cairo_new_path(cr);cairo_arc(cr,cx,cy,159,math.pi,2*math.pi);cairo_stroke(cr)
+ color(cr,p.sage,.18);cairo_set_dash(cr,{2,5},2,0)
+ cairo_new_path(cr);cairo_arc(cr,cx,cy,159,0,math.pi);cairo_stroke(cr);cairo_set_dash(cr,{},0,0)
+ if progress>0 then
+  color(cr,phase=='day' and p.gold or p.ivory,.85);cairo_set_line_width(cr,2)
+  cairo_new_path(cr);cairo_arc(cr,cx,cy,159,math.pi,math.pi+progress*math.pi);cairo_stroke(cr)
  end
- local a=-math.pi/2+hour/24*math.pi*2
- color(cr,p.ivory);cairo_new_path(cr);cairo_arc(cr,cx+math.cos(a)*159,cy+math.sin(a)*159,4,0,math.pi*2);cairo_fill(cr)
- centered(cr,cx,cy-55,'WAKTU SETEMPAT',10,p.sage)
+ sun_icon(cr,cx+math.cos(sun)*159,cy+math.sin(sun)*159,phase=='day')
+ moon_icon(cr,cx+math.cos(moon)*159,cy+math.sin(moon)*159,phase=='night')
+ centered(cr,cx,cy-55,phase=='day' and 'SIANG DI MALANG' or 'MALAM DI MALANG',10,phase=='day' and p.gold or p.sage)
  centered(cr,cx,cy+30,os.date('%H.%M'),82,p.ivory,'DejaVu Serif')
- centered(cr,cx,cy+73,'JEDA DI ANTARA KESIBUKAN',9,p.gold)
+ local estimated=rawget(d,'solar_source')~='open-meteo'
+ centered(cr,cx,cy+70,estimated and 'SIKLUS JAM / PERKIRAAN' or 'LINTASAN SIANG DAN MALAM',9,p.gold)
+ local rise=rawget(d,'sunrise_label') or '--.--';local setting=rawget(d,'sunset_label') or '--.--'
+ centered(cr,cx,cy+95,(estimated and '~ ' or '')..'TERBIT '..rise..' / TERBENAM '..setting,9,p.sage)
 end
 local function trace(cr,x,y,w,h,history)
  local values={}
@@ -117,7 +151,7 @@ function conky_laras()
  local d=data()
  text(cr,87,75,'L A R A S',20,p.ivory)
  text(cr,88,100,'CATATAN SENJA / NUSANTARA',9,p.sage)
- dial(cr,310,305)
+ dial(cr,310,305,d)
  local days={'MINGGU','SENIN','SELASA','RABU','KAMIS','JUMAT','SABTU'}
  local months={'JANUARI','FEBRUARI','MARET','APRIL','MEI','JUNI','JULI','AGUSTUS','SEPTEMBER','OKTOBER','NOVEMBER','DESEMBER'}
  centered(cr,310,533,days[tonumber(os.date('%w'))+1]..', '..os.date('%d')..' '..months[tonumber(os.date('%m'))],17,p.ivory,'DejaVu Serif')

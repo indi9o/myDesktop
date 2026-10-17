@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Small local metrics collector. No external packages; weather refreshes every 15 min."""
 from collections import deque
+from daycycle import cycle
 import json
 import os
 from pathlib import Path
@@ -22,21 +23,29 @@ def refresh_weather():
         retry = 60
         try:
             url = ('https://api.open-meteo.com/v1/forecast?latitude=-7.98&longitude=112.63'
-                   '&current=temperature_2m,weather_code&timezone=Asia%2FJakarta')
+                   '&current=temperature_2m,weather_code&timezone=Asia%2FJakarta'
+                   '&daily=sunrise,sunset&past_days=1&forecast_days=2&timeformat=unixtime')
             with urllib.request.urlopen(url, timeout=8) as response:
-                current = json.load(response)['current']
+                payload = json.load(response)
+                current = payload['current']
             code = int(current['weather_code'])
             label = ('CERAH' if code == 0 else 'CERAH BERAWAN' if code < 3
                      else 'MENDUNG' if code == 3 else 'BERKABUT' if code < 50
                      else 'GERIMIS' if code < 60 else 'HUJAN' if code < 70
                      else 'SALJU' if code < 80 else 'HUJAN LOKAL' if code < 95 else 'HUJAN PETIR')
+            daily = payload.get('daily') or {}
+            if not isinstance(daily, dict): daily = {}
+            rises, settings = daily.get('sunrise'), daily.get('sunset')
+            if not isinstance(rises, list) or not isinstance(settings, list): rises, settings = [], []
             weather.update(temperature=str(round(current['temperature_2m'])),
-                           weather=label, weather_time=time.time())
+                           weather=label, weather_time=time.time(),
+                           solar_days=[{'sunrise': rise, 'sunset': setting}
+                                       for rise, setting in zip(rises, settings)])
             tmp = BASE / 'weather.tmp'
             tmp.write_text(json.dumps(weather))
             tmp.replace(BASE / 'weather.json')
             retry = 900
-        except (OSError, ValueError, KeyError):
+        except (OSError, ValueError, KeyError, TypeError):
             pass
         time.sleep(retry)
 
@@ -82,7 +91,8 @@ def collect():
                 break
         except (OSError, ValueError):
             pass
-    result.update(weather)
+    result.update({key: value for key, value in weather.items() if key != 'solar_days'})
+    result.update(cycle(time.time(), weather.get('solar_days')))
     if time.time() - float(result['weather_time']) > 7200:
         result['temperature'], result['weather'] = '--', 'CUACA TIDAK TERSEDIA'
     return result

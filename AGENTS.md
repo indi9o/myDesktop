@@ -16,7 +16,7 @@ Periksa `git status` dan pertahankan perubahan pengguna yang tidak terkait.
 - `conky-horizon/`: tema lanskap bulan.
 - `conky-atlas/`: tema topografi; Atlas Live adalah mode dari tema yang sama.
 - `conky-nusantara/`: tema gunung berapi dengan nuansa Indonesia.
-- `conky-laras/`: persawahan senja dengan dial waktu, meter bulir padi,
+- `conky-laras/`: persawahan senja dengan dial matahari–bulan, meter bulir padi,
   dan grafik riwayat CPU; pembaruan tetap tiga detik.
 - `conky-garuda-orbit/`: astronaut Indonesia, wallpaper Majapahit Nebula,
   jam piksel, dan visualizer audio.

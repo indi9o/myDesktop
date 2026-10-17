@@ -4,7 +4,11 @@
 
 **Persawahan Nusantara · senja · jam serif.** Laras memadukan ilustrasi terasering saat senja dengan warna hijau tua, putih gading, dan emas hangat. Latar merupakan interpretasi artistik suasana pedesaan Jawa dan Bali, bukan foto atau dokumentasi lokasi tertentu.
 
-Jam serif berada di dalam **dial waktu** di sisi kiri: 60 garis penanda menunjukkan menit, busur emas bertambah sepanjang jam, dan titik kecil mengitari lingkaran menurut waktu 24 jam. Tanggal berada di bawah dial; cuaca Malang menjadi komposisi terpisah di sampingnya.
+Jam serif berada di dalam **dial lintasan matahari–bulan** di sisi kiri. Ikon matahari emas dan bulan sabit bergerak di sisi berlawanan pada lintasan yang sama: matahari melintas di busur atas saat siang, lalu bulan mengambil busur atas saat malam. Ikon aktif lebih terang; busur yang sudah dilalui ikut terisi. Garis kecil di tepi tetap menandai menit. Tanggal berada di bawah dial; cuaca Malang menjadi komposisi terpisah di sampingnya.
+
+Progres siang memakai waktu terbit–terbenam Malang; progres malam memakai terbenam hingga terbit berikutnya. Waktu tersebut dibaca dari data harian [Open-Meteo](https://open-meteo.com/en/docs). Label terbit dan terbenam memakai WIB, sedangkan angka jam mengikuti zona waktu komputer. Ikon Bulan adalah ilustrasi progres malam, bukan perhitungan posisi, waktu terbit, atau fase Bulan astronomis.
+
+Data terbit–terbenam disimpan bersama cache cuaca. Jika cache tidak mencakup waktu sekarang, dial memakai perkiraan siklus 06.00–18.00 WIB dan menampilkan **SIKLUS JAM / PERKIRAAN** beserta tanda `~`, hingga data tersedia kembali.
 
 Di kanan atas, grafik **Denyut Mesin** memperlihatkan perubahan beban CPU. Tiga meter **bulir padi** menunjukkan CPU, RAM, dan SSD: 20 bulir masing-masing mewakili lima persen. Warna bergeser dari emas ke amber mulai 75%, lalu merah bata mulai 90%. RAM tersedia, ruang penyimpanan kosong, dan suhu CPU ditampilkan di dekat meter masing-masing.
 
@@ -55,7 +59,7 @@ Pemulihan mengembalikan wallpaper dan autostart sebelumnya. Untuk tema myDesktop
 - Zram menampilkan alokasi swap dan RAM fisik secara terpisah. Swap lain ditampilkan sebagai `SWAP SSD`; label ini mengasumsikan swap non-zram berada di SSD dan tidak mendeteksi jenis media fisik.
 - Tidak ada zram atau swap: nilai alokasi ditampilkan nol. Sensor atau jejak RAM fisik zram yang tidak dapat dibaca ditandai `--`.
 - Cuaca memakai koordinat Malang melalui [Open-Meteo](https://open-meteo.com/). Data tidak tersedia atau lebih tua dari dua jam ditandai `CUACA TIDAK TERSEDIA`.
-- Untuk mengganti kota, ubah koordinat pada `theme/metrics.py` serta label `MALANG` pada `theme/laras.lua`.
+- Untuk mengganti kota, ubah koordinat dan zona waktu API pada `theme/metrics.py`, `ZONE` pada `theme/daycycle.py`, serta label `MALANG` pada `theme/laras.lua`.
 - Jam dan tanggal mengikuti zona waktu lokal komputer.
 - Warna, ukuran, susunan widget, dan ornamen padi diatur pada `theme/laras.lua`.
 - Grafik CPU menyimpan maksimal 60 sampel berjarak tiga detik di memori (sekitar tiga menit). Ketika baru berjalan, grafik memakai sampel yang sudah tersedia, dengan durasi sebenarnya tertulis di bawahnya; sebelum dua sampel tersedia, tampil pesan menunggu. Skala vertikal tetap 0–100%. Riwayat dimulai ulang bersama kolektor.
@@ -79,7 +83,13 @@ Buat ulang paket setelah mengubah source:
 python3 build-package.py
 ```
 
-Builder memeriksa sintaks Python dan shell sebelum membuat arsip. Perubahan visual juga perlu diperiksa melalui render Conky pada display virtual dengan HOME sementara; jangan menjalankan installer hanya untuk membuat pratinjau.
+Untuk memeriksa transisi siang–malam, batas terbit/terbenam, lewat tengah malam, dan cache tidak tersedia:
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+Tes tersedia dalam source repositori. Builder memeriksa sintaks Python dan shell sebelum membuat arsip. Perubahan visual juga perlu diperiksa melalui render Conky pada display virtual dengan HOME sementara; jangan menjalankan installer hanya untuk membuat pratinjau.
 
 ## Struktur
 
@@ -87,7 +97,8 @@ Builder memeriksa sintaks Python dan shell sebelum membuat arsip. Perubahan visu
 |---|---|
 | `theme/Laras.conf` | Konfigurasi Conky |
 | `theme/laras.lua` | Dial waktu, cuaca, meter bulir padi, dan grafik CPU |
-| `theme/metrics.py` | Kolektor sistem dan cuaca |
+| `theme/metrics.py` | Kolektor sistem, cuaca, dan cache terbit–terbenam |
+| `theme/daycycle.py` | Perhitungan progres siang–malam dan perkiraan offline |
 | `theme/start.sh` | Peluncur, penguncian, dan deteksi lebar monitor |
 | `theme/laras-wallpaper.png` | Ilustrasi terasering senja |
 | `theme/wallpaper-prompt.txt` | Prompt ImageGen |

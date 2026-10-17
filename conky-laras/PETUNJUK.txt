@@ -25,3 +25,7 @@ pribadi. Lihat README.md untuk panduan lengkap.
 
 Dial waktu di kiri, cuaca di samping, meter bulir padi dan riwayat CPU di kanan.
 Diperbarui setiap 3 detik tanpa audio; wallpaper persawahan tetap statis.
+
+Dial matahari-bulan mengikuti progres siang-malam Malang dari terbit/terbenam
+Open-Meteo. Bulan adalah ilustrasi waktu malam, bukan posisi astronomisnya.
+Jika data belum tersedia, siklus 06.00-18.00 WIB ditandai PERKIRAAN.
